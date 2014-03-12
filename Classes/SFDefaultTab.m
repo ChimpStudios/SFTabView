@@ -24,6 +24,8 @@ static CGImageRef  inactiveTab;
 - (void) setRepresentedObject: (id) representedObject {
 	CAConstraintLayoutManager *layout = [CAConstraintLayoutManager layoutManager];
     [self setLayoutManager:layout];
+    
+    [self setDefaults]; // use the default close button
 
     _representedObject = representedObject;
     self.frame = CGRectMake(0, 0, 125, 28);
@@ -85,7 +87,10 @@ static CGImageRef  inactiveTab;
 	[tabLabel setFont:@"LucidaGrande"];
 	
 	[self addSublayer:tabLabel];
+}
 
+- (void) setDefaults {
+    defaultCloseButtonClassName = @"SFDefaultCloseButton";
 }
 
 - (void) setSelected: (BOOL) selected {

@@ -16,6 +16,7 @@
 
 @interface SFDefaultTab : CALayer {
     id _representedObject;
+    NSString *defaultCloseButtonClassName;
 }
 
 - (void) setRepresentedObject: (id) representedObject;
