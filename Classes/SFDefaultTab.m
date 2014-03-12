@@ -11,6 +11,9 @@
 static CGImageRef  activeTab;
 static CGImageRef  inactiveTab;
 
+static CGImageRef  activeClose;
+static CGImageRef  inactiveClose;
+
 
 @implementation SFLabelLayer
 - (BOOL)containsPoint:(CGPoint)p
@@ -24,8 +27,6 @@ static CGImageRef  inactiveTab;
 - (void) setRepresentedObject: (id) representedObject {
 	CAConstraintLayoutManager *layout = [CAConstraintLayoutManager layoutManager];
     [self setLayoutManager:layout];
-    
-    [self setDefaults]; // use the default close button
 
     _representedObject = representedObject;
     self.frame = CGRectMake(0, 0, 125, 28);
@@ -87,10 +88,26 @@ static CGImageRef  inactiveTab;
 	[tabLabel setFont:@"LucidaGrande"];
 	
 	[self addSublayer:tabLabel];
+    [self setupCloseButton];
 }
 
-- (void) setDefaults {
-    defaultCloseButtonClassName = @"SFDefaultCloseButton";
+- (void) setupCloseButton {
+    CFStringRef close = (CFStringRef)[[NSBundle mainBundle] pathForResource:@"tabClose" ofType:@"png"];
+    CFURLRef closeURL = CFURLCreateWithFileSystemPath(nil, close, kCFURLPOSIXPathStyle, NO);
+    CGImageSourceRef imageSource = CGImageSourceCreateWithURL(closeURL, nil);
+    activeClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
+    CFRelease(closeURL); CFRelease(imageSource);
+
+//    close = (CFStringRef)[[NSBundle mainBundle] pathForResource:@"inactiveClose" ofType:@"png"];
+//    closeURL = CFURLCreateWithFileSystemPath(nil, close, kCFURLPOSIXPathStyle, NO);
+//    imageSource = CGImageSourceCreateWithURL(closeURL, nil);
+//    inactiveClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
+//    CFRelease(closeURL); CFRelease(imageSource);
+
+    CALayer* layer = [[CALayer alloc] init];
+    [layer setFrame: CGRectMake(50, 5, 10, 10)];
+    [layer setContents:(id)activeClose];
+	[self addSublayer:layer];
 }
 
 - (void) setSelected: (BOOL) selected {

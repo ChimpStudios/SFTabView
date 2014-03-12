@@ -13,10 +13,11 @@
 @interface SFLabelLayer : CATextLayer {}
 @end
 
+@interface SFCloseLayer : CALayer {}
+@end
 
 @interface SFDefaultTab : CALayer {
     id _representedObject;
-    NSString *defaultCloseButtonClassName;
 }
 
 - (void) setRepresentedObject: (id) representedObject;

@@ -20,7 +20,6 @@
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		BE2E8C3518CFF05A0076D40A /* tabClose.png in Resources */ = {isa = PBXBuildFile; fileRef = BE2E8C3318CFF05A0076D40A /* tabClose.png */; };
 		BE2E8C3618CFF05A0076D40A /* tabCloseHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = BE2E8C3418CFF05A0076D40A /* tabCloseHighlighted.png */; };
-		BE2E8C3918CFFAE90076D40A /* SFDefaultCloseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2E8C3818CFFAE90076D40A /* SFDefaultCloseButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,8 +45,6 @@
 		8D1107320486CEB800E47090 /* SFTabView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFTabView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE2E8C3318CFF05A0076D40A /* tabClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabClose.png; sourceTree = "<group>"; };
 		BE2E8C3418CFF05A0076D40A /* tabCloseHighlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabCloseHighlighted.png; sourceTree = "<group>"; };
-		BE2E8C3718CFFAE90076D40A /* SFDefaultCloseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDefaultCloseButton.h; sourceTree = "<group>"; };
-		BE2E8C3818CFFAE90076D40A /* SFDefaultCloseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDefaultCloseButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +73,6 @@
 		0C5CBD1711BD545E00448ADD /* SFTabView */ = {
 			isa = PBXGroup;
 			children = (
-				BE2E8C3718CFFAE90076D40A /* SFDefaultCloseButton.h */,
-				BE2E8C3818CFFAE90076D40A /* SFDefaultCloseButton.m */,
 				0C5CBCF011BD52BA00448ADD /* SFDefaultTab.h */,
 				0C5CBCF111BD52BA00448ADD /* SFDefaultTab.m */,
 				0C5CBCF211BD52BA00448ADD /* SFTabView.h */,
@@ -236,7 +231,6 @@
 				0C5CBCF611BD52BA00448ADD /* SFDefaultTab.m in Sources */,
 				0C5CBCF711BD52BA00448ADD /* SFTabView.m in Sources */,
 				0C5CBCF811BD52BA00448ADD /* SFTabViewAppDelegate.m in Sources */,
-				BE2E8C3918CFFAE90076D40A /* SFDefaultCloseButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
