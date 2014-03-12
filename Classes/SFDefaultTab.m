@@ -22,6 +22,13 @@ static CGImageRef  inactiveClose;
 }
 @end
 
+@implementation SFCloseLayer
+- (BOOL)containsPoint:(CGPoint)p
+{
+	return FALSE;
+}
+@end
+
 @implementation SFDefaultTab
 
 - (void) setRepresentedObject: (id) representedObject {
@@ -104,7 +111,7 @@ static CGImageRef  inactiveClose;
 //    inactiveClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
 //    CFRelease(closeURL); CFRelease(imageSource);
 
-    CALayer* layer = [[CALayer alloc] init];
+    SFCloseLayer* layer = [[SFCloseLayer alloc] init];
     [layer setFrame: CGRectMake(50, 5, 10, 10)];
     [layer setContents:(id)activeClose];
 	[self addSublayer:layer];
