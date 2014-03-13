@@ -270,7 +270,25 @@
 	[self addTabAtIndex:[self numberOfTabs] withRepresentedObject:representedObject];
 }
 
+
+/*
+ * This redundancy seems to improve performance
+ */
 - (void) mouseMoved:(NSEvent *)theEvent {
+    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
+}
+
+/*
+ * This redundancy seems to improve performance
+ */
+- (void) mouseExited:(NSEvent *)theEvent {
+    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
+}
+
+/*
+ * This redundancy seems to improve performance
+ */
+- (void) mouseEntered:(NSEvent *)theEvent {
     [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
 }
 
@@ -459,7 +477,7 @@
     
     // Setting up tracking area
     [self removeTrackingArea:area];
-    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
+    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
     [self addTrackingArea:area];
 
     currentSelectedTab.zPosition = 1000;

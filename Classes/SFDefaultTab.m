@@ -12,7 +12,7 @@ static CGImageRef  activeTab;
 static CGImageRef  inactiveTab;
 
 static CGImageRef  activeClose;
-static CGImageRef  inactiveClose;
+static CGImageRef  activeCloseHighlight;
 
 @implementation SFLabelLayer
 - (BOOL)containsPoint:(CGPoint)p
@@ -98,30 +98,37 @@ static CGImageRef  inactiveClose;
 }
 
 - (void) setupCloseButton {
-    CFStringRef close = (CFStringRef)[[NSBundle mainBundle] pathForResource:@"tabClose" ofType:@"png"];
-    CFURLRef closeURL = CFURLCreateWithFileSystemPath(nil, close, kCFURLPOSIXPathStyle, NO);
-    CGImageSourceRef imageSource = CGImageSourceCreateWithURL(closeURL, nil);
-    activeClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
-    CFRelease(closeURL); CFRelease(imageSource);
-
-//    close = (CFStringRef)[[NSBundle mainBundle] pathForResource:@"inactiveClose" ofType:@"png"];
-//    closeURL = CFURLCreateWithFileSystemPath(nil, close, kCFURLPOSIXPathStyle, NO);
-//    imageSource = CGImageSourceCreateWithURL(closeURL, nil);
-//    inactiveClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
-//    CFRelease(closeURL); CFRelease(imageSource);
+    CFStringRef closeHighlight = (CFStringRef)[[NSBundle mainBundle] pathForResource:@"tabClose" ofType:@"png"];
+    CFURLRef closeHighlistURL = CFURLCreateWithFileSystemPath(nil, closeHighlight, kCFURLPOSIXPathStyle, NO);
+    CGImageSourceRef imageSourceHighlist = CGImageSourceCreateWithURL(closeHighlistURL, nil);
+    activeCloseHighlight = CGImageSourceCreateImageAtIndex(imageSourceHighlist, 0, nil);
+    CFRelease(closeHighlistURL); CFRelease(imageSourceHighlist);
 
     layer = [[SFCloseLayer alloc] init];
-    [layer setFrame: CGRectMake(90, 3, 16, 16)];
-    [layer setContents:(id)activeClose];
-    [layer setBackgroundColor:[NSColor orangeColor].CGColor];
+    [layer setFrame: CGRectMake(81, 1, 30, 24)];
+    [layer setContents:(id)activeCloseHighlight];
+    [layer setOpacity:0.0f];
+    [self setHovered:false];
     
 	[self addSublayer:layer];
 }
 
+- (BOOL) overCloseButton: (NSPoint)point {
+    return point.x < 25.0f && point.x > 0 && point.y < 25.0f && point.y > 0;
+}
+
 - (void) mousemove:(NSPoint)point {
     CGPoint relative = [layer convertPoint:point fromLayer:nil];
-    if (relative.x < 16.0f && relative.x > 0 && relative.y < 16.0f && relative.y > 0) {
-        NSLog(@"inside");
+    if ([self overCloseButton:relative]) {
+        if (!self.hovered) {
+            [layer setOpacity:100.0f];
+            [self setHovered:true];
+        }
+    } else {
+        if (self.hovered) {
+            [layer setOpacity:0.0f];
+            [self setHovered:false];
+        }
     }
 }
 
