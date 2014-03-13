@@ -21,6 +21,7 @@
     SFCloseLayer *layer;
 }
 
+- (void) mousemove:(NSPoint)point;
 - (void) setRepresentedObject: (id) representedObject;
 - (void) setSelected: (BOOL) selected;
 

@@ -7,6 +7,7 @@
 //
 
 #import "SFTabView.h"
+#import "SFDefaultTab.h"
 
 @implementation SFTabView
 
@@ -269,8 +270,8 @@
 	[self addTabAtIndex:[self numberOfTabs] withRepresentedObject:representedObject];
 }
 
-- (void) mouseEntered:(NSEvent *)theEvent {
-    NSLog(@"Fuck my wife basedgod!");
+- (void) mouseMoved:(NSEvent *)theEvent {
+    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
 }
 
 - (void) addTabAtIndex: (int) index withRepresentedObject: (id) representedObject {
@@ -435,7 +436,7 @@
 #pragma mark -
 #pragma mark Selecting a Tab
 
-- (void) selectTab: (CALayer *) tab {
+- (void) selectTab: (SFDefaultTab *) tab {
 	
 	if (![arrangedTabs containsObject:tab]) {
 		return;
@@ -458,7 +459,7 @@
     
     // Setting up tracking area
     [self removeTrackingArea:area];
-    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
+    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
     [self addTrackingArea:area];
 
     currentSelectedTab.zPosition = 1000;

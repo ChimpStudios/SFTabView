@@ -8,7 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
-#import "SFDefaultTab.h"
+
+@class SFDefaultTab;
 
 @protocol SFTabViewDelegate;
 
@@ -28,7 +29,7 @@
     IBOutlet NSObject  <SFTabViewDelegate> *delegate;
 
     CALayer *currentClickedTab;
-    CALayer *currentSelectedTab;
+    SFDefaultTab *currentSelectedTab;
 
     CALayer *tabsLayer;
     CAScrollLayer *scrollLayer;

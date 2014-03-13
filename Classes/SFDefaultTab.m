@@ -113,8 +113,16 @@ static CGImageRef  inactiveClose;
     layer = [[SFCloseLayer alloc] init];
     [layer setFrame: CGRectMake(90, 3, 16, 16)];
     [layer setContents:(id)activeClose];
+    [layer setBackgroundColor:[NSColor orangeColor].CGColor];
     
 	[self addSublayer:layer];
+}
+
+- (void) mousemove:(NSPoint)point {
+    CGPoint relative = [layer convertPoint:point fromLayer:nil];
+    if (relative.x < 16.0f && relative.x > 0 && relative.y < 16.0f && relative.y > 0) {
+        NSLog(@"inside");
+    }
 }
 
 - (BOOL) hittestCloseButton: (NSEvent*)event {
