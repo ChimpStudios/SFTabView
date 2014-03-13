@@ -14,7 +14,6 @@ static CGImageRef  inactiveTab;
 static CGImageRef  activeClose;
 static CGImageRef  inactiveClose;
 
-
 @implementation SFLabelLayer
 - (BOOL)containsPoint:(CGPoint)p
 {
@@ -111,7 +110,7 @@ static CGImageRef  inactiveClose;
 //    inactiveClose = CGImageSourceCreateImageAtIndex(imageSource, 0, nil);
 //    CFRelease(closeURL); CFRelease(imageSource);
 
-    SFCloseLayer* layer = [[SFCloseLayer alloc] init];
+    layer = [[SFCloseLayer alloc] init];
     [layer setFrame: CGRectMake(90, 3, 16, 16)];
     [layer setContents:(id)activeClose];
     

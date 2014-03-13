@@ -18,6 +18,7 @@
 
 @interface SFDefaultTab : CALayer {
     id _representedObject;
+    SFCloseLayer *layer;
 }
 
 - (void) setRepresentedObject: (id) representedObject;
