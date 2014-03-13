@@ -26,6 +26,6 @@
 - (void) mousemove:(NSPoint)point;
 - (void) setRepresentedObject: (id) representedObject;
 - (void) setSelected: (BOOL) selected;
-
+- (BOOL) hittestCloseButton: (NSEvent*)event;
 
 @end

@@ -136,10 +136,6 @@ static CGImageRef  activeCloseHighlight;
     return [layer hitTest:[event locationInWindow]];
 }
 
-- (void) highlightCloseButton {
-    
-}
-
 - (void) setSelected: (BOOL) selected {
     [CATransaction begin]; 
     [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];

@@ -157,6 +157,10 @@
     
     // Checking if a tab was clicked.
     CALayer *clickedLayer = [tabsLayer hitTest:mousePointInView];
+    
+    if (currentSelectedTab.hovered) {
+        [self removeTab:currentSelectedTab];
+    }
 
     if (clickedLayer &&  clickedLayer != tabsLayer ) {
         canDragTab = NO;
