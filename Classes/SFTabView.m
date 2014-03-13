@@ -249,8 +249,6 @@
             mouseDownPoint = mousePointInView;
         }
     }
-
-    
 }
 
 - (void)mouseUp: (NSEvent *) theEvent {
@@ -450,6 +448,7 @@
 }
 
 - (CALayer *) firstTab {
+    if ([arrangedTabs count] == 0) { return NULL; }
     return [arrangedTabs objectAtIndex:0];
 }
 
