@@ -33,6 +33,8 @@
     CALayer *tabsLayer;
     CAScrollLayer *scrollLayer;
     
+    NSTrackingArea *area;
+    
     NSMutableArray *arrangedTabs;
     NSPoint mouseDownPoint, mouseDownStartingPoint;
     

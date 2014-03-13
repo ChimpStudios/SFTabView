@@ -289,10 +289,6 @@
     // Setting up new tab.
     [newtab setFrame: CGRectMake([self startingXOriginForTabAtIndex:index], 0, [newtab frame].size.width, [newtab frame].size.height)];
 	[newtab setZPosition:  (float)index * -1 ];
-    
-    // Setting up tracking area
-    NSTrackingArea* area = [[NSTrackingArea alloc] initWithRect:newtab.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
-    [self addTrackingArea:area];
 
 	if ([self numberOfTabs] > 0 && index <= [self numberOfTabs]-1) {
 		// Getting the right tag sequence (left-to-right).
@@ -460,6 +456,11 @@
 
     currentSelectedTab = tab;
     
+    // Setting up tracking area
+    [self removeTrackingArea:area];
+    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
+    [self addTrackingArea:area];
+
     currentSelectedTab.zPosition = 1000;
 
     if ([currentSelectedTab respondsToSelector:@selector(setSelected:)]) {
