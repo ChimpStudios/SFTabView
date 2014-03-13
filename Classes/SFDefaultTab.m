@@ -114,6 +114,7 @@ static CGImageRef  inactiveClose;
     SFCloseLayer* layer = [[SFCloseLayer alloc] init];
     [layer setFrame: CGRectMake(90, 3, 16, 16)];
     [layer setContents:(id)activeClose];
+    
 	[self addSublayer:layer];
 }
 

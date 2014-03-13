@@ -10,7 +10,7 @@
 
 @implementation SFTabView
 
-@synthesize delegate, defaultTabClassName;
+@synthesize delegate;
 @synthesize startingOffset, tabOffset, tabMagneticForce;
 
 #pragma mark -
@@ -47,7 +47,6 @@
     tabOffset = 0;
     startingOffset = 0;
     tabMagneticForce = 5;
-    defaultTabClassName = @"SFDefaultTab";
    
     [self setupObservers];
 }
@@ -270,10 +269,12 @@
 	[self addTabAtIndex:[self numberOfTabs] withRepresentedObject:representedObject];
 }
 
+- (void) mouseEntered:(NSEvent *)theEvent {
+    NSLog(@"Fuck my wife basedgod!");
+}
+
 - (void) addTabAtIndex: (int) index withRepresentedObject: (id) representedObject {
-    // Loading the class that will render the tab layer.
-    Class tabLayerClass = [[NSBundle mainBundle] classNamed: defaultTabClassName];
-    id newtab = [tabLayerClass layer];
+    SFDefaultTab *newtab = [[SFDefaultTab alloc] init];
     
     // Passing the represented object to the tab layer.
     if ([newtab respondsToSelector:@selector(setRepresentedObject:)]) {
@@ -288,6 +289,10 @@
     // Setting up new tab.
     [newtab setFrame: CGRectMake([self startingXOriginForTabAtIndex:index], 0, [newtab frame].size.width, [newtab frame].size.height)];
 	[newtab setZPosition:  (float)index * -1 ];
+    
+    // Setting up tracking area
+    NSTrackingArea* area = [[NSTrackingArea alloc] initWithRect:newtab.frame options:(NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
+    [self addTrackingArea:area];
 
 	if ([self numberOfTabs] > 0 && index <= [self numberOfTabs]-1) {
 		// Getting the right tag sequence (left-to-right).

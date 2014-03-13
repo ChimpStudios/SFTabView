@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
+#import "SFDefaultTab.h"
 
 @protocol SFTabViewDelegate;
 
@@ -34,8 +35,6 @@
     
     NSMutableArray *arrangedTabs;
     NSPoint mouseDownPoint, mouseDownStartingPoint;
-    
-    NSString *defaultTabClassName;
     
     BOOL canDragTab;
     
