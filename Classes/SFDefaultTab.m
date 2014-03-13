@@ -105,7 +105,7 @@ static CGImageRef  activeCloseHighlight;
     CFRelease(closeHighlistURL); CFRelease(imageSourceHighlist);
 
     layer = [[SFCloseLayer alloc] init];
-    [layer setFrame: CGRectMake(81, 1, 30, 24)];
+    [layer setFrame: CGRectMake(81, 2, 30, 24)];
     [layer setContents:(id)activeCloseHighlight];
     [layer setOpacity:0.0f];
     [self setHovered:false];
