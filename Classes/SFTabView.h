@@ -28,7 +28,7 @@
 @interface SFTabView : NSView {
     IBOutlet NSObject  <SFTabViewDelegate> *delegate;
 
-    CALayer *currentClickedTab;
+    SFDefaultTab *currentClickedTab;
     SFDefaultTab *currentSelectedTab;
 
     CALayer *tabsLayer;

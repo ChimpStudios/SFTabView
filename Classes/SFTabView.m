@@ -156,8 +156,9 @@
     mouseDownPoint = mousePointInView;
     
     // Checking if a tab was clicked.
-    CALayer *clickedLayer = [tabsLayer hitTest:mousePointInView];
+    SFDefaultTab *clickedLayer = (SFDefaultTab*)[tabsLayer hitTest:mousePointInView];
     
+    // if they clicked the close button
     if (currentSelectedTab.hovered) {
         [self removeTab:currentSelectedTab];
     }
@@ -254,7 +255,6 @@
 
 - (void)mouseUp: (NSEvent *) theEvent {
     if (currentClickedTab) {
-    
         // On mouse up we let the dragged tab slide to the starting or changed position.
         CGRect newFrame = currentClickedTab.frame;
         newFrame.origin.x = mouseDownStartingPoint.x;
@@ -263,6 +263,8 @@
         currentClickedTab = nil;
     }
     
+//    [self selectTab:currentClickedTab];
+    [self refreshCloseListener];
     [self scrollToTab:currentSelectedTab];
    
 }
@@ -479,10 +481,7 @@
 
     currentSelectedTab = tab;
     
-    // Setting up tracking area
-    [self removeTrackingArea:area];
-    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
-    [self addTrackingArea:area];
+    [self refreshCloseListener];
 
     currentSelectedTab.zPosition = 1000;
 
@@ -496,6 +495,13 @@
     
     [self scrollToTab:currentSelectedTab];
 
+}
+
+- (void) refreshCloseListener {
+    // Setting up tracking area
+    [self removeTrackingArea:area];
+    area = [[NSTrackingArea alloc] initWithRect:currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:(id)self userInfo:nil];
+    [self addTrackingArea:area];
 }
 
 - (void) selectTabAtIndex: (unsigned int) index {
