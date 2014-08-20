@@ -185,6 +185,11 @@
 
 #pragma mark - Mouse Handling
 
+- (BOOL)mouseDownCanMoveWindow
+{
+    return NO;
+}
+
 - (void)mouseDown:(NSEvent *)theEvent
 {
     // Getting clicked point.
@@ -214,7 +219,28 @@
         }
 
     }
-
+    else
+    {
+        // Adapted from http://stackoverflow.com/a/15095645
+        NSWindow *window = [self window];
+        NSPoint mouseLocation = [window convertBaseToScreen:[theEvent locationInWindow]];
+        NSPoint origin = [window frame].origin;
+        // Now we loop handling mouse events until we get a mouse up event.
+        while ((theEvent = [NSApp nextEventMatchingMask:NSLeftMouseDownMask|NSLeftMouseDraggedMask|NSLeftMouseUpMask untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:YES])&&([theEvent type]!=NSLeftMouseUp))
+        {
+            @autoreleasepool
+            {
+                NSPoint currentLocation = [window convertBaseToScreen:[theEvent locationInWindow]];
+                origin.x += currentLocation.x-mouseLocation.x;
+                origin.y += currentLocation.y-mouseLocation.y;
+                // Move the window by the mouse displacement since the last event.
+                [window setFrameOrigin:origin];
+                mouseLocation = currentLocation;
+            }
+        }
+        [self mouseUp:theEvent];
+        return;
+    }
 }
 
 
