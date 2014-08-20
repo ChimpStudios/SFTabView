@@ -8,45 +8,77 @@
 
 #import "SFTabViewAppDelegate.h"
 
+
 @implementation SFTabViewAppDelegate
 
 @synthesize window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+
+#pragma mark - Application stuff
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+{
 	tabView.delegate = self;
     tabView.tabOffset = -15;
     tabView.startingOffset = 20;
-	
-    [tabView addTabWithRepresentedObject:[NSDictionary dictionaryWithObject:@"One" forKey:@"name"]];
-    
+
+    [tabView addTabWithRepresentedObject:@{@"name": @"One"}];
 	number = 1;
 }
 
-- (void) removeTab: (id) sender {
-	--number;
-	
-	[tabView removeTab:[tabView selectedTab]];
+
+
+#pragma mark - IBAction
+
+- (void)removeTab:(id)sender
+{
+    if ([tabView numberOfTabs] > 0)
+    {
+        --number;
+        [tabView removeTab:[tabView selectedTab]];
+    }
 }
 
-- (void) addTab: (id) sender {
+
+- (void)addTab:(id)sender
+{
 	++number;
-	[tabView addTabWithRepresentedObject:[NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", number] forKey:@"name"]];
+	[tabView addTabWithRepresentedObject:@{@"name": [NSString stringWithFormat:@"%d", number]}];
 	[tabView selectTab:[tabView lastTab]];
 }
 
-- (void)tabView:(SFTabView *)tabView didAddTab:(CALayer *)tab {
+
+
+#pragma mark - SFTabViewDelegate
+
+- (void)tabView:(SFTabView *)tabView didAddTab:(CALayer *)tab
+{
+    NSLog(@"didAddTab");
 }
 
-- (void)tabView:(SFTabView *)tabView didRemovedTab:(CALayer *)tab {
+
+- (void)tabView:(SFTabView *)tabView didRemovedTab:(CALayer *)tab
+{
+    NSLog(@"didRemovedTab");
 }
 
-- (BOOL)tabView:(SFTabView *)tabView shouldSelectTab:(CALayer *)tab {
+
+- (BOOL)tabView:(SFTabView *)tabView shouldSelectTab:(CALayer *)tab
+{
+    NSLog(@"shouldSelectTab");
     return YES;
 }
 
-- (void)tabView:(SFTabView *)tabView didSelectTab:(CALayer *)tab {
+
+- (void)tabView:(SFTabView *)tabView didSelectTab:(CALayer *)tab
+{
+    NSLog(@"didSelectTab");
 }
 
-- (void)tabView:(SFTabView *)tabView willSelectTab:(CALayer *)tab {
+
+- (void)tabView:(SFTabView *)tabView willSelectTab:(CALayer *)tab
+{
+    NSLog(@"willSelectTab");
 }
+
 @end

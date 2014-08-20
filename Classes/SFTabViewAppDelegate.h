@@ -9,17 +9,18 @@
 #import <Cocoa/Cocoa.h>
 #import "SFTabView.h"
 
-@interface SFTabViewAppDelegate : NSObject <NSApplicationDelegate, SFTabViewDelegate> {
-    NSWindow *window;
+
+@interface SFTabViewAppDelegate : NSObject <NSApplicationDelegate, SFTabViewDelegate>
+{
+    int number;
+
+    NSWindow *__weak window;
     IBOutlet SFTabView *tabView;
-	
-	int number;
-	
 }
 
-@property (assign) IBOutlet NSWindow *window;
+@property (weak) IBOutlet NSWindow *window;
 
-- (void) removeTab: (id) sender;
-- (void) addTab: (id) sender;
+- (IBAction)removeTab:(id)sender;
+- (IBAction)addTab:(id)sender;
 
 @end
