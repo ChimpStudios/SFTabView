@@ -25,19 +25,20 @@
 @interface SFDefaultTab : CALayer
 {
     id _representedObject;
-    SFCloseLayer *layer;
 
     NSImage *_activeTab;
     NSImage *_inactiveTab;
+
+    // Close layer
+    SFCloseLayer *_closeLayer;
     NSImage *_activeClose;
     NSImage *_activeCloseHighlight;
 }
 
-@property BOOL hovered;
+@property (nonatomic, assign) BOOL closeLayerHovered;
 
 - (void)mousemove:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;
 - (void)setSelected:(BOOL)selected;
-- (BOOL)hittestCloseButton:(NSEvent*)event;
 
 @end

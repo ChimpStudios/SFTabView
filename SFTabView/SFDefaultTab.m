@@ -91,13 +91,13 @@
 {
     _activeCloseHighlight = [NSImage imageNamed:@"tabClose.png"];
 
-    layer = [[SFCloseLayer alloc] init];
-    [layer setFrame:CGRectMake(81, 2, 30, 24)];
-    [layer setContents:_activeCloseHighlight];
-    [layer setOpacity:0.0f];
-    [self setHovered:false];
+    _closeLayer = [[SFCloseLayer alloc] init];
+    [_closeLayer setFrame:CGRectMake(81, 2, 30, 24)];
+    [_closeLayer setContents:_activeCloseHighlight];
+    [_closeLayer setOpacity:0.0f];
+    _closeLayerHovered = NO;
 
-    [self addSublayer:layer];
+    [self addSublayer:_closeLayer];
 }
 
 
@@ -109,29 +109,23 @@
 
 - (void)mousemove:(NSPoint)point
 {
-    CGPoint relative = [layer convertPoint:point fromLayer:nil];
+    CGPoint relative = [_closeLayer convertPoint:point fromLayer:nil];
     if ([self overCloseButton:relative])
     {
-        if (!self.hovered)
+        if (_closeLayerHovered == NO)
         {
-            [layer setOpacity:100.0f];
-            [self setHovered:true];
+            [_closeLayer setOpacity:100.0f];
+            _closeLayerHovered = YES;
         }
     }
     else
     {
-        if (self.hovered)
+        if (_closeLayerHovered == YES)
         {
-            [layer setOpacity:0.0f];
-            [self setHovered:false];
+            [_closeLayer setOpacity:0.0f];
+            _closeLayerHovered = NO;
         }
     }
-}
-
-
-- (BOOL)hittestCloseButton:(NSEvent*)event
-{
-    return [layer hitTest:[event locationInWindow]];
 }
 
 

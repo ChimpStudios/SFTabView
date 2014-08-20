@@ -200,13 +200,7 @@
     // Checking if a tab was clicked.
     SFDefaultTab *clickedLayer = (SFDefaultTab*)[tabsLayer hitTest:mousePointInView];
 
-    // if they clicked the close button
-    if (currentSelectedTab.hovered)
-    {
-        [self removeTab:currentSelectedTab];
-    }
-
-    if (clickedLayer && clickedLayer != tabsLayer)
+    if (clickedLayer && clickedLayer != tabsLayer && currentSelectedTab.closeLayerHovered == NO)
     {
         canDragTab = NO;
         BOOL shouldSelectTab = YES;
@@ -315,6 +309,13 @@
 
 - (void)mouseUp:(NSEvent *)theEvent
 {
+    // if they clicked the close button
+    if (currentSelectedTab.closeLayerHovered == YES)
+    {
+        [self removeTab:currentSelectedTab];
+        return;
+    }
+
     if (currentClickedTab)
     {
         // On mouse up we let the dragged tab slide to the starting or changed position.
@@ -450,7 +451,7 @@
     int indexOfInitialTab = index;
     CALayer *tab = arrangedTabs[indexOfInitialTab];
     CGPoint startingOrigin = tab.frame.origin;
-    int indexOfLandingTab = [arrangedTabs count] -1;
+    int indexOfLandingTab = (int)([arrangedTabs count] - 1);
 
     int newIndex = indexOfInitialTab; //- 1;
 
@@ -522,13 +523,13 @@
 
 - (int)indexOfTab:(CALayer *)tab
 {
-    return [arrangedTabs indexOfObject:tab];
+    return (int)[arrangedTabs indexOfObject:tab];
 }
 
 
 - (int)numberOfTabs
 {
-    return [arrangedTabs count];
+    return (int)[arrangedTabs count];
 }
 
 
