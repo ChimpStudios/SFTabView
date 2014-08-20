@@ -35,10 +35,6 @@
 #pragma mark - SFTabView Implementation
 @implementation SFTabView
 
-@synthesize delegate;
-@synthesize startingOffset, tabOffset, tabMagneticForce;
-
-
 #pragma mark - Constructors
 
 - (void) awakeFromNib
@@ -73,9 +69,9 @@
     [self.layer addSublayer:[self scrollLayer]];
 
     arrangedTabs = [[NSMutableArray alloc] init];
-    tabOffset = 0;
-    startingOffset = 0;
-    tabMagneticForce = 5;
+    _tabOffset = 0;
+    _startingOffset = 0;
+    _tabMagneticForce = 5;
 
     [self setupObservers];
 }
@@ -206,9 +202,9 @@
         BOOL shouldSelectTab = YES;
 
         // Asking delegate if the tab can be selected.
-        if ([delegate respondsToSelector:@selector(tabView:shouldSelectTab:)])
+        if ([_delegate respondsToSelector:@selector(tabView:shouldSelectTab:)])
         {
-            shouldSelectTab = [delegate tabView:self shouldSelectTab:clickedLayer];
+            shouldSelectTab = [_delegate tabView:self shouldSelectTab:clickedLayer];
         }
         if (shouldSelectTab)
         {
@@ -236,11 +232,11 @@
         BOOL rightShift = (deltaPoint.x > 0);
 
         // Applying magnetic force, prevent dragging tab if the drag distance is < than tabMagneticForce.
-        if (rightShift && mousePointInView.x > mouseDownPoint.x + tabMagneticForce)
+        if (rightShift && mousePointInView.x > mouseDownPoint.x + _tabMagneticForce)
         {
             canDragTab = YES;
         }
-        else if (mousePointInView.x < mouseDownPoint.x - tabMagneticForce)
+        else if (mousePointInView.x < mouseDownPoint.x - _tabMagneticForce)
         {
             canDragTab = YES;
         }
@@ -269,7 +265,7 @@
         CALayer *la = [tabsLayer hitTest:proximityLayerPoint];
 
         // if the drag is outside the tabview range we'll adjust the crossed tab to be the first or the last.
-        if ((!la || la == tabsLayer) && proximityLayerPoint.x < startingOffset)
+        if ((!la || la == tabsLayer) && proximityLayerPoint.x < _startingOffset)
         {
             la = [self firstTab];
         }
@@ -286,9 +282,9 @@
 
         // Moving the dragged tab according.
         newFrame.origin.x = tabNewOrigin.x;
-        if (newFrame.origin.x < startingOffset)
+        if (newFrame.origin.x < _startingOffset)
         {
-            newFrame.origin.x = startingOffset;
+            newFrame.origin.x = _startingOffset;
         }
         else if (newFrame.origin.x + newFrame.size.width > tabsLayer.frame.size.width)
         {
@@ -404,7 +400,7 @@
 
             // Moving a tab.
             CGRect newFrame = landingTab.frame;
-            newFrame.origin.x += [newtab frame].size.width + tabOffset;
+            newFrame.origin.x += [newtab frame].size.width + _tabOffset;
             landingTab.frame = newFrame;
         }
     }
@@ -418,19 +414,19 @@
         [self selectTab:newtab];
     }
 
-    int offset = tabOffset;
+    int offset = _tabOffset;
     if ([self numberOfTabs] == 1)
     {
-        offset = startingOffset;
+        offset = _startingOffset;
     }
 
     // adjusting the size of the tabsLayer
     [tabsLayer setValue:[NSNumber numberWithInt:[newtab frame].size.width + tabsLayer.frame.size.width + offset] forKeyPath: @"frame.size.width"];
 
     // Notifing delegate
-    if ([delegate respondsToSelector:@selector(tabView:didAddTab:)])
+    if ([_delegate respondsToSelector:@selector(tabView:didAddTab:)])
     {
-        [delegate tabView:self didAddTab:newtab];
+        [_delegate tabView:self didAddTab:newtab];
     }
 }
 
@@ -487,7 +483,7 @@
         // Moving a tab.
         CGRect newFrame = CGRectMake(startingOrigin.x, startingOrigin.y, landingTab.frame.size.width , landingTab.frame.size.height);
         landingTab.frame = newFrame;
-        startingOrigin.x += newFrame.size.width + tabOffset;
+        startingOrigin.x += newFrame.size.width + _tabOffset;
     }
 
     // Removing the frame from the view layer without animating.
@@ -497,18 +493,18 @@
     [CATransaction commit];
 
 
-    int offset = tabOffset;
+    int offset = _tabOffset;
     if ([self numberOfTabs] == 1)
     {
-        offset = startingOffset;
+        offset = _startingOffset;
     }
 
     // adjusting the size of the tabsLayer
     [tabsLayer setValue:[NSNumber numberWithInt:tabsLayer.frame.size.width - ([tab frame].size.width + offset)] forKeyPath: @"frame.size.width"];
 
-    if ([delegate respondsToSelector:@selector(tabView:didRemovedTab:)])
+    if ([_delegate respondsToSelector:@selector(tabView:didRemovedTab:)])
     {
-        [delegate tabView:self didRemovedTab: tab];
+        [_delegate tabView:self didRemovedTab: tab];
     }
 
     // Removing tab from the arranged tags.
@@ -571,9 +567,9 @@
         return;
     }
 
-    if ([delegate respondsToSelector:@selector(tabView:willSelectTab:)])
+    if ([_delegate respondsToSelector:@selector(tabView:willSelectTab:)])
     {
-        [delegate tabView:self willSelectTab:tab];
+        [_delegate tabView:self willSelectTab:tab];
     }
 
     if (currentSelectedTab)
@@ -597,9 +593,9 @@
         [(id)currentSelectedTab setSelected: YES];
     }
 
-    if ([delegate respondsToSelector:@selector(tabView:didSelectTab:)])
+    if ([_delegate respondsToSelector:@selector(tabView:didSelectTab:)])
     {
-        [delegate tabView:self didSelectTab:tab];
+        [_delegate tabView:self didSelectTab:tab];
     }
 
     [self scrollToTab:currentSelectedTab];
@@ -698,7 +694,7 @@
     }
     else if ([tab isEqualTo:[self firstTab]])
     {
-        newFrame.origin.x -= startingOffset;
+        newFrame.origin.x -= _startingOffset;
     }
     [tabsLayer scrollRectToVisible:newFrame];
 
@@ -829,11 +825,11 @@
 {
     if (index == 0)
     {
-        return startingOffset;
+        return _startingOffset;
     }
     else
     {
-        return [[self tabAtIndex: index-1] frame].origin.x + [[self tabAtIndex:index-1] frame].size.width + tabOffset;
+        return [[self tabAtIndex: index-1] frame].origin.x + [[self tabAtIndex:index-1] frame].size.width + _tabOffset;
     }
 }
 
