@@ -92,9 +92,9 @@
     _activeCloseHighlight = [NSImage imageNamed:@"tabClose"];
 
     _closeLayer = [[SFCloseLayer alloc] init];
-    [_closeLayer setFrame:NSMakeRect(self.frame.size.width - _activeCloseHighlight.size.width - 16.0, (self.frame.size.height - _activeCloseHighlight.size.height) / 2, _activeCloseHighlight.size.width, _activeCloseHighlight.size.height)];
-    [_closeLayer setContents:_activeCloseHighlight];
-    [_closeLayer setOpacity:0.0f];
+    _closeLayer.frame = NSMakeRect(self.frame.size.width - _activeCloseHighlight.size.width - 16.0, (self.frame.size.height - _activeCloseHighlight.size.height) / 2, _activeCloseHighlight.size.width, _activeCloseHighlight.size.height);
+    _closeLayer.contents = _activeCloseHighlight;
+    _closeLayer.hidden = YES;
     _closeLayerHovered = NO;
 
     [self addSublayer:_closeLayer];
@@ -114,7 +114,7 @@
     {
         if (_closeLayerHovered == NO)
         {
-            [_closeLayer setOpacity:100.0f];
+            _closeLayer.hidden = NO;
             _closeLayerHovered = YES;
         }
     }
@@ -122,7 +122,7 @@
     {
         if (_closeLayerHovered == YES)
         {
-            [_closeLayer setOpacity:0.0f];
+            _closeLayer.hidden = YES;
             _closeLayerHovered = NO;
         }
     }
