@@ -38,8 +38,8 @@
     self.frame = CGRectMake(0, 0, 125, 28);
     if (!_activeTab)
     {
-        _activeTab = [NSImage imageNamed:@"activeTab.png"];
-		_inactiveTab = [NSImage imageNamed:@"inactiveTab.png"];
+        _activeTab = [NSImage imageNamed:@"activeTab"];
+		_inactiveTab = [NSImage imageNamed:@"inactiveTab"];
     }
 
     [self setContents:_inactiveTab];
@@ -89,10 +89,10 @@
 
 - (void)setupCloseButton
 {
-    _activeCloseHighlight = [NSImage imageNamed:@"tabClose.png"];
+    _activeCloseHighlight = [NSImage imageNamed:@"tabClose"];
 
     _closeLayer = [[SFCloseLayer alloc] init];
-    [_closeLayer setFrame:CGRectMake(81, 2, 30, 24)];
+    [_closeLayer setFrame:NSMakeRect(self.frame.size.width - _activeCloseHighlight.size.width - 16.0, (self.frame.size.height - _activeCloseHighlight.size.height) / 2, _activeCloseHighlight.size.width, _activeCloseHighlight.size.height)];
     [_closeLayer setContents:_activeCloseHighlight];
     [_closeLayer setOpacity:0.0f];
     _closeLayerHovered = NO;
@@ -103,13 +103,13 @@
 
 - (BOOL)overCloseButton:(NSPoint)point
 {
-    return point.x < 25.0f && point.x > 0 && point.y < 25.0f && point.y > 0;
+    return point.x < _closeLayer.frame.size.width && point.x > 0 && point.y < _closeLayer.frame.size.height && point.y > 0;
 }
 
 
 - (void)mousemove:(NSPoint)point
 {
-    CGPoint relative = [_closeLayer convertPoint:point fromLayer:nil];
+    CGPoint relative = [_closeLayer convertPoint:point fromLayer:self.superlayer];
     if ([self overCloseButton:relative])
     {
         if (_closeLayerHovered == NO)

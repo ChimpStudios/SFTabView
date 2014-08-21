@@ -14,6 +14,11 @@
 		8714FE8C19A543A000C5D6AC /* SFDefaultTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8919A543A000C5D6AC /* SFDefaultTab.m */; };
 		8714FE8D19A543A000C5D6AC /* SFTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8B19A543A000C5D6AC /* SFTabView.m */; };
 		8714FE9219A548CA00C5D6AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8714FE9119A548CA00C5D6AC /* Images.xcassets */; };
+		8714FEAF19A5753400C5D6AC /* activeTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAA19A5753400C5D6AC /* activeTab.png */; };
+		8714FEB019A5753400C5D6AC /* inactiveTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAB19A5753400C5D6AC /* inactiveTab.png */; };
+		8714FEB119A5753400C5D6AC /* tabBg.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAC19A5753400C5D6AC /* tabBg.png */; };
+		8714FEB219A5753400C5D6AC /* tabClose.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAD19A5753400C5D6AC /* tabClose.png */; };
+		8714FEB319A5753400C5D6AC /* tabClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAE19A5753400C5D6AC /* tabClose@2x.png */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
@@ -35,6 +40,11 @@
 		8714FE8A19A543A000C5D6AC /* SFTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTabView.h; sourceTree = "<group>"; };
 		8714FE8B19A543A000C5D6AC /* SFTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTabView.m; sourceTree = "<group>"; };
 		8714FE9119A548CA00C5D6AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
+		8714FEAA19A5753400C5D6AC /* activeTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activeTab.png; sourceTree = "<group>"; };
+		8714FEAB19A5753400C5D6AC /* inactiveTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactiveTab.png; sourceTree = "<group>"; };
+		8714FEAC19A5753400C5D6AC /* tabBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBg.png; sourceTree = "<group>"; };
+		8714FEAD19A5753400C5D6AC /* tabClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabClose.png; sourceTree = "<group>"; };
+		8714FEAE19A5753400C5D6AC /* tabClose@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabClose@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* SFTabView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SFTabView-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* SFTabView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFTabView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -123,6 +133,7 @@
 		8714FE8719A543A000C5D6AC /* SFTabView */ = {
 			isa = PBXGroup;
 			children = (
+				8714FEA919A5753400C5D6AC /* Images */,
 				8714FE8819A543A000C5D6AC /* SFDefaultTab.h */,
 				8714FE8919A543A000C5D6AC /* SFDefaultTab.m */,
 				8714FE8A19A543A000C5D6AC /* SFTabView.h */,
@@ -140,6 +151,18 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 			);
 			name = SFTabView;
+			sourceTree = "<group>";
+		};
+		8714FEA919A5753400C5D6AC /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				8714FEAA19A5753400C5D6AC /* activeTab.png */,
+				8714FEAB19A5753400C5D6AC /* inactiveTab.png */,
+				8714FEAC19A5753400C5D6AC /* tabBg.png */,
+				8714FEAD19A5753400C5D6AC /* tabClose.png */,
+				8714FEAE19A5753400C5D6AC /* tabClose@2x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,8 +217,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8714FE9219A548CA00C5D6AC /* Images.xcassets in Resources */,
+				8714FEB319A5753400C5D6AC /* tabClose@2x.png in Resources */,
+				8714FEB019A5753400C5D6AC /* inactiveTab.png in Resources */,
+				8714FEB119A5753400C5D6AC /* tabBg.png in Resources */,
 				8714FE8419A542C200C5D6AC /* InfoPlist.strings in Resources */,
+				8714FEB219A5753400C5D6AC /* tabClose.png in Resources */,
 				0C5CBD0111BD534200448ADD /* MainMenu.xib in Resources */,
+				8714FEAF19A5753400C5D6AC /* activeTab.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

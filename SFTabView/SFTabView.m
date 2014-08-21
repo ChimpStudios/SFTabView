@@ -199,9 +199,9 @@
     mouseDownPoint = mousePointInView;
 
     // Checking if a tab was clicked.
-    SFDefaultTab *clickedLayer = (SFDefaultTab*)[tabsLayer hitTest:mousePointInView];
+    SFDefaultTab *clickedLayer = (SFDefaultTab *)[tabsLayer hitTest:mousePointInView];
 
-    if (clickedLayer && clickedLayer != tabsLayer && currentSelectedTab.closeLayerHovered == NO)
+    if (clickedLayer && [clickedLayer isEqualTo:tabsLayer] == NO && currentSelectedTab.closeLayerHovered == NO)
     {
         canDragTab = NO;
         BOOL shouldSelectTab = YES;
@@ -219,7 +219,7 @@
         }
 
     }
-    else
+    else if (currentSelectedTab.closeLayerHovered == NO)
     {
         // Adapted from http://stackoverflow.com/a/15095645
         NSWindow *window = [self window];
@@ -367,7 +367,9 @@
  */
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
+    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    [currentSelectedTab mousemove:layerPoint];
 }
 
 
@@ -376,7 +378,9 @@
  */
 - (void)mouseExited:(NSEvent *)theEvent
 {
-    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
+    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    [currentSelectedTab mousemove:layerPoint];
 }
 
 
@@ -385,7 +389,9 @@
  */
 - (void)mouseEntered:(NSEvent *)theEvent
 {
-    [currentSelectedTab mousemove:[self convertPoint:theEvent.locationInWindow fromView:nil]];
+    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    [currentSelectedTab mousemove:layerPoint];
 }
 
 
