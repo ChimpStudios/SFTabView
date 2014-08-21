@@ -31,6 +31,7 @@
     SFDefaultTab *_currentClickedTab;
     SFDefaultTab *_currentSelectedTab;
 
+    CALayer *_bottomBorderLayer;
     CALayer *_tabsLayer;
     CAScrollLayer *_scrollLayer;
 
@@ -90,6 +91,30 @@
  every drag tentative.
  */
 @property (nonatomic, assign) int tabMagneticForce;
+
+
+/**
+ Border color to show under tabbar
+
+ @default CGColorCreateGenericRGB(153.0 / 255.0, 153.0 / 255.0, 153.0 / 255.0, 1);
+ */
+@property (nonatomic, assign) CGColorRef bottomBorderColor;
+
+
+/**
+ Bottom border width
+
+ @default 1.0;
+ */
+@property (nonatomic, assign) double bottomBorderWidth;
+
+/**
+ Border color to show under tabbar
+
+ @default YES;
+ */
+@property (nonatomic, assign) BOOL showBottomBorder;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /// @name Adding and Removing Tabs

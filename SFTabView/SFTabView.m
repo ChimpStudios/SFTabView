@@ -59,23 +59,56 @@
 
 - (void)setDefaults
 {
+    // Set some defaults
+    _arrangedTabs = [[NSMutableArray alloc] init];
+    _tabOffset = -20;
+    _startingOffset = 20;
+    _tabMagneticForce = 5;
+
+    _bottomBorderColor = CGColorCreateGenericRGB(153.0 / 255.0, 153.0 / 255.0, 153.0 / 255.0, 1);
+    _bottomBorderWidth = 1.0;
+    _showBottomBorder = YES;
+
+    // Background layer
     CALayer *bgLayer = [CALayer layer];
     bgLayer.frame = NSRectToCGRect([self bounds]);
     bgLayer.layoutManager = [CAConstraintLayoutManager layoutManager];
-
     [self setLayer:bgLayer];
     [self setWantsLayer:YES];
 
+    // Bottom border layer
+    _bottomBorderLayer = [CALayer layer];
+    _bottomBorderLayer.frame = NSMakeRect(0, 0, self.bounds.size.width, _bottomBorderWidth);
+    _bottomBorderLayer.autoresizingMask = kCALayerWidthSizable;
+    _bottomBorderLayer.backgroundColor = _bottomBorderColor;
+    _bottomBorderLayer.hidden = (_showBottomBorder == NO);
+    [self.layer addSublayer:_bottomBorderLayer];
+
+    // Add other layers and setup observers
     [self.layer addSublayer:[self scrollLayer]];
-
-    _arrangedTabs = [[NSMutableArray alloc] init];
-    _tabOffset = 0;
-    _startingOffset = 0;
-    _tabMagneticForce = 5;
-
     [self setupObservers];
 }
 
+
+#pragma mark - Setters
+
+- (void)setBottomBorderColor:(CGColorRef)bottomBorderColor
+{
+    _bottomBorderColor = bottomBorderColor;
+    _bottomBorderLayer.backgroundColor = _bottomBorderColor;
+}
+
+- (void)setBottomBorderWidth:(double)bottomBorderWidth
+{
+    _bottomBorderWidth = bottomBorderWidth;
+    _bottomBorderLayer.frame = NSMakeRect(0, 0, self.bounds.size.width, _bottomBorderWidth);
+}
+
+- (void)setShowBottomBorder:(BOOL)showBottomBorder
+{
+    _showBottomBorder = showBottomBorder;
+    _bottomBorderLayer.hidden = (_showBottomBorder == NO);
+}
 
 
 #pragma mark - Obververs

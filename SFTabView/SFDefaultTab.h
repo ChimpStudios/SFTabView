@@ -28,6 +28,7 @@
 
     NSImage *_activeTab;
     NSImage *_inactiveTab;
+    SFLabelLayer *_tabLabel;
 
     // Close layer
     SFCloseLayer *_closeLayer;

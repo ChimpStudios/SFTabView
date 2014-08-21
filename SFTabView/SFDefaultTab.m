@@ -35,54 +35,55 @@
     [self setLayoutManager:layout];
 
     _representedObject = representedObject;
-    self.frame = CGRectMake(0, 0, 125, 28);
+
     if (!_activeTab)
     {
         _activeTab = [NSImage imageNamed:@"activeTab"];
 		_inactiveTab = [NSImage imageNamed:@"inactiveTab"];
     }
+    self.frame = CGRectMake(0, 0, _activeTab.size.width, _activeTab.size.height);
 
     [self setContents:_inactiveTab];
 
-    SFLabelLayer *tabLabel = [SFLabelLayer layer];
+    _tabLabel = [SFLabelLayer layer];
     if (representedObject[@"name"] != nil)
     {
-        tabLabel.string = representedObject[@"name"];
+        _tabLabel.string = representedObject[@"name"];
     }
-    tabLabel.fontSize = 13.0f;
-    tabLabel.shadowOpacity = 0.9f;
-    tabLabel.shadowOffset = CGSizeMake(0, -1);
-    tabLabel.shadowRadius = 1.0f;
-    tabLabel.shadowColor = CGColorCreateGenericRGB(1,1,1, 1);
-    tabLabel.foregroundColor = CGColorCreateGenericRGB(0.1,0.1,0.1, 1);
-    tabLabel.truncationMode = kCATruncationEnd;
-    tabLabel.alignmentMode = kCAAlignmentCenter;
+    _tabLabel.fontSize = 13.0f;
+    _tabLabel.shadowOpacity = 0.9f;
+    _tabLabel.shadowOffset = CGSizeMake(0, -1);
+    _tabLabel.shadowRadius = 1.0f;
+    _tabLabel.shadowColor = CGColorCreateGenericRGB(1, 1, 1, 1);
+    _tabLabel.foregroundColor = CGColorCreateGenericRGB(102.0 / 255.0, 102.0 / 255.0, 102.0 / 255.0, 1);
+    _tabLabel.truncationMode = kCATruncationEnd;
+    _tabLabel.alignmentMode = kCAAlignmentCenter;
     CAConstraint *constraint = [CAConstraint constraintWithAttribute:kCAConstraintMidX
                                                           relativeTo:@"superlayer"
                                                            attribute:kCAConstraintMidX];
-    [tabLabel addConstraint:constraint];
+    [_tabLabel addConstraint:constraint];
 
     constraint = [CAConstraint constraintWithAttribute:kCAConstraintMidY
                                             relativeTo:@"superlayer"
                                              attribute:kCAConstraintMidY
                                                 offset:-2.0];
-    [tabLabel addConstraint:constraint];
+    [_tabLabel addConstraint:constraint];
 
     constraint = [CAConstraint constraintWithAttribute:kCAConstraintMaxX
                                             relativeTo:@"superlayer"
                                              attribute:kCAConstraintMaxX
                                                 offset:-20.0];
-    [tabLabel addConstraint:constraint];
+    [_tabLabel addConstraint:constraint];
 
     constraint = [CAConstraint constraintWithAttribute:kCAConstraintMinX
                                             relativeTo:@"superlayer"
                                              attribute:kCAConstraintMinX
                                                 offset:20.0];
-    [tabLabel addConstraint:constraint];
+    [_tabLabel addConstraint:constraint];
 
-    [tabLabel setFont:@"LucidaGrande"];
+    [_tabLabel setFont:@"LucidaGrande"];
 
-    [self addSublayer:tabLabel];
+    [self addSublayer:_tabLabel];
     [self setupCloseButton];
 }
 
@@ -136,10 +137,12 @@
     if (selected)
     {
         [self setContents:_activeTab];
+        _tabLabel.foregroundColor = CGColorCreateGenericRGB(51.0 / 255.0, 51.0 / 255.0, 51.0 / 255.0, 1);
     }
     else
     {
         [self setContents:_inactiveTab];
+        _tabLabel.foregroundColor = CGColorCreateGenericRGB(102.0 / 255.0, 102.0 / 255.0, 102.0 / 255.0, 1);
     }
     [CATransaction commit];
 }
