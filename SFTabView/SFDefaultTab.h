@@ -36,10 +36,13 @@
     NSImage *_activeCloseHighlight;
 }
 
+@property (nonatomic, assign) BOOL selected;
 @property (nonatomic, assign) BOOL closeLayerHovered;
+@property (nonatomic, retain) NSFont *tabLabelFont;
+@property (nonatomic, assign) CGColorRef tabLabelActiveColor;
+@property (nonatomic, assign) CGColorRef tabLabelInactiveColor;
 
 - (void)mousemove:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;
-- (void)setSelected:(BOOL)selected;
 
 @end

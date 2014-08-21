@@ -7,6 +7,7 @@
 //
 
 #import "SFTabViewAppDelegate.h"
+#import "SFDefaultTab.h"
 
 
 @implementation SFTabViewAppDelegate
@@ -19,7 +20,10 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
 	tabView.delegate = self;
+
     [tabView addTabWithRepresentedObject:@{@"name": @"One"}];
+    [(SFDefaultTab *)[tabView tabAtIndex:0] setTabLabelActiveColor:[NSColor yellowColor].CGColor];
+    [(SFDefaultTab *)[tabView tabAtIndex:0] setTabLabelFont:[NSFont fontWithName:@"Arial" size:21.0]];
 	number = 1;
 }
 

@@ -69,6 +69,10 @@
     _bottomBorderWidth = 1.0;
     _showBottomBorder = YES;
 
+    _tabLabelFont = [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+    _tabLabelActiveColor = [NSColor blackColor];
+    _tabLabelInactiveColor = [NSColor colorWithRed:102.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
+
     // Background layer
     CALayer *bgLayer = [CALayer layer];
     bgLayer.frame = NSRectToCGRect([self bounds]);
@@ -431,6 +435,9 @@
 - (void)addTabAtIndex:(int)index withRepresentedObject:(id)representedObject
 {
     SFDefaultTab *newtab = [[SFDefaultTab alloc] init];
+    newtab.tabLabelFont = _tabLabelFont;
+    newtab.tabLabelActiveColor = _tabLabelActiveColor.CGColor;
+    newtab.tabLabelInactiveColor = _tabLabelInactiveColor.CGColor;
 
     // Passing the represented object to the tab layer.
     if ([newtab respondsToSelector:@selector(setRepresentedObject:)])
@@ -439,7 +446,7 @@
     }
 
     // Removing animation for z-index changes.
-    NSMutableDictionary *customActions=[NSMutableDictionary dictionaryWithDictionary:[newtab actions]];
+    NSMutableDictionary *customActions = [NSMutableDictionary dictionaryWithDictionary:[newtab actions]];
     customActions[@"zPosition"] = [NSNull null];
     [newtab setActions:customActions];
 

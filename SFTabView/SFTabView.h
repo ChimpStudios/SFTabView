@@ -96,7 +96,7 @@
 /**
  Border color to show under tabbar
 
- @default CGColorCreateGenericRGB(153.0 / 255.0, 153.0 / 255.0, 153.0 / 255.0, 1);
+ Default: CGColorCreateGenericRGB(153.0 / 255.0, 153.0 / 255.0, 153.0 / 255.0, 1);
  */
 @property (nonatomic, assign) CGColorRef bottomBorderColor;
 
@@ -104,16 +104,41 @@
 /**
  Bottom border width
 
- @default 1.0;
+ Default: 1.0;
  */
 @property (nonatomic, assign) double bottomBorderWidth;
+
 
 /**
  Border color to show under tabbar
 
- @default YES;
+ Default: YES;
  */
 @property (nonatomic, assign) BOOL showBottomBorder;
+
+
+/**
+ Tab label font
+
+ Default: [NSFont fontWithName:@"Helvetica Neue" size:14.0];
+ */
+@property (nonatomic, retain) NSFont *tabLabelFont;
+
+
+/**
+ Tab label active color
+
+ Default: [NSColor blackColor];
+ */
+@property (nonatomic, retain) NSColor *tabLabelActiveColor;
+
+
+/**
+ Tab label active color
+
+ Default: [NSColor colorWithRed:102.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
+ */
+@property (nonatomic, retain) NSColor *tabLabelInactiveColor;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

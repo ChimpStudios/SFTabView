@@ -29,6 +29,59 @@
 
 @implementation SFDefaultTab
 
+
+#pragma mark - Setters
+
+- (void)setSelected:(BOOL)selected
+{
+    _selected = selected;
+
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
+    if (selected == YES)
+    {
+        [self setContents:_activeTab];
+        _tabLabel.foregroundColor = _tabLabelActiveColor;
+    }
+    else
+    {
+        [self setContents:_inactiveTab];
+        _tabLabel.foregroundColor = _tabLabelInactiveColor;
+    }
+    [CATransaction commit];
+}
+
+
+- (void)setTabLabelFont:(NSFont *)tabLabelFont
+{
+    _tabLabelFont = tabLabelFont;
+    _tabLabel.font = (__bridge CFTypeRef)(_tabLabelFont.familyName);
+    _tabLabel.fontSize = _tabLabelFont.pointSize;
+}
+
+
+- (void)setTabLabelActiveColor:(CGColorRef)tabLabelActiveColor
+{
+    _tabLabelActiveColor = tabLabelActiveColor;
+    if (self.selected == YES)
+    {
+        _tabLabel.foregroundColor = _tabLabelActiveColor;
+    }
+}
+
+
+- (void)setTabLabelInactiveColor:(CGColorRef)tabLabelInactiveColor
+{
+    _tabLabelInactiveColor = tabLabelInactiveColor;
+    if (self.selected == YES)
+    {
+        _tabLabel.foregroundColor = _tabLabelInactiveColor;
+    }
+}
+
+
+#pragma mak - Helpers
+
 - (void)setRepresentedObject:(id)representedObject
 {
     CAConstraintLayoutManager *layout = [CAConstraintLayoutManager layoutManager];
@@ -50,12 +103,13 @@
     {
         _tabLabel.string = representedObject[@"name"];
     }
-    _tabLabel.fontSize = 13.0f;
+    _tabLabel.font = (__bridge CFTypeRef)(_tabLabelFont.familyName);
+    _tabLabel.fontSize = _tabLabelFont.pointSize;
     _tabLabel.shadowOpacity = 0.9f;
     _tabLabel.shadowOffset = CGSizeMake(0, -1);
     _tabLabel.shadowRadius = 1.0f;
     _tabLabel.shadowColor = CGColorCreateGenericRGB(1, 1, 1, 1);
-    _tabLabel.foregroundColor = CGColorCreateGenericRGB(102.0 / 255.0, 102.0 / 255.0, 102.0 / 255.0, 1);
+    _tabLabel.foregroundColor = _tabLabelActiveColor;
     _tabLabel.truncationMode = kCATruncationEnd;
     _tabLabel.alignmentMode = kCAAlignmentCenter;
     CAConstraint *constraint = [CAConstraint constraintWithAttribute:kCAConstraintMidX
@@ -80,8 +134,6 @@
                                              attribute:kCAConstraintMinX
                                                 offset:20.0];
     [_tabLabel addConstraint:constraint];
-
-    [_tabLabel setFont:@"LucidaGrande"];
 
     [self addSublayer:_tabLabel];
     [self setupCloseButton];
@@ -127,24 +179,6 @@
             _closeLayerHovered = NO;
         }
     }
-}
-
-
-- (void)setSelected:(BOOL)selected
-{
-    [CATransaction begin];
-    [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
-    if (selected)
-    {
-        [self setContents:_activeTab];
-        _tabLabel.foregroundColor = CGColorCreateGenericRGB(51.0 / 255.0, 51.0 / 255.0, 51.0 / 255.0, 1);
-    }
-    else
-    {
-        [self setContents:_inactiveTab];
-        _tabLabel.foregroundColor = CGColorCreateGenericRGB(102.0 / 255.0, 102.0 / 255.0, 102.0 / 255.0, 1);
-    }
-    [CATransaction commit];
 }
 
 @end
