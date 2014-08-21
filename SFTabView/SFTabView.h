@@ -28,18 +28,18 @@
 
 @interface SFTabView : NSView
 {
-    SFDefaultTab *currentClickedTab;
-    SFDefaultTab *currentSelectedTab;
+    SFDefaultTab *_currentClickedTab;
+    SFDefaultTab *_currentSelectedTab;
 
-    CALayer *tabsLayer;
-    CAScrollLayer *scrollLayer;
+    CALayer *_tabsLayer;
+    CAScrollLayer *_scrollLayer;
 
-    NSTrackingArea *area;
+    NSTrackingArea *_area;
 
-    NSMutableArray *arrangedTabs;
-    NSPoint mouseDownPoint, mouseDownStartingPoint;
+    NSMutableArray *_arrangedTabs;
+    NSPoint _mouseDownPoint, _mouseDownStartingPoint;
 
-    BOOL canDragTab;
+    BOOL _canDragTab;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////
