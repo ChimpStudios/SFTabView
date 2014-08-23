@@ -441,6 +441,16 @@
 
 
 /**
+ Sent to the delegate to allow or prohibit the specified tab to be removed.
+ @param tabView The Tab View that sent the message.
+ @param tab The tab going to be removed from the the Tab View.
+
+ @see tabView:didRemovedTab:
+ */
+- (BOOL)tabView:(SFTabView *)tabView shouldRemoveTab:(CALayer *)tab;
+
+
+/**
  Sent after a tab is deleted from the Tab View.
  @param tabView The Tab View that sent the message.
  @param tab The tab deleted from the the Tab View.

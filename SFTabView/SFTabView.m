@@ -526,6 +526,15 @@
 
     int newIndex = indexOfInitialTab; //- 1;
 
+    // Check whether delegate allows to delete the tab
+    if ([_delegate respondsToSelector:@selector(tabView:shouldRemoveTab:)])
+    {
+        if ([_delegate tabView:self shouldRemoveTab:tab] == NO)
+        {
+            return;
+        }
+    }
+
     if ([tab isEqualTo:[self lastTab]] && [tab isEqualTo:[self firstTab]] == NO)
     {
         [self selectTab:[self tabAtIndex:indexOfLandingTab - 1]];
