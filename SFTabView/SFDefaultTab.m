@@ -42,11 +42,13 @@
     {
         [self setContents:_activeTab];
         _tabLabel.foregroundColor = _tabLabelActiveColor;
+        _closeLayer.hidden = NO;
     }
     else
     {
         [self setContents:_inactiveTab];
         _tabLabel.foregroundColor = _tabLabelInactiveColor;
+        _closeLayer.hidden = YES;
     }
     [CATransaction commit];
 }
@@ -109,7 +111,7 @@
     _tabLabel.shadowOffset = CGSizeMake(0, -1);
     _tabLabel.shadowRadius = 1.0f;
     _tabLabel.shadowColor = CGColorCreateGenericRGB(1, 1, 1, 1);
-    _tabLabel.foregroundColor = _tabLabelActiveColor;
+    _tabLabel.foregroundColor = _tabLabelInactiveColor;
     _tabLabel.truncationMode = kCATruncationEnd;
     _tabLabel.alignmentMode = kCAAlignmentCenter;
     CAConstraint *constraint = [CAConstraint constraintWithAttribute:kCAConstraintMidX
@@ -142,11 +144,13 @@
 
 - (void)setupCloseButton
 {
-    _activeCloseHighlight = [NSImage imageNamed:@"tabClose"];
+    _closeButton = [NSImage imageNamed:@"tabClose"];
+    _closeButtonHover = [NSImage imageNamed:@"tabCloseHover"];
+    _closeButtonActive = [NSImage imageNamed:@"tabCloseActive"];
 
     _closeLayer = [[SFCloseLayer alloc] init];
-    _closeLayer.frame = NSMakeRect(self.frame.size.width - _activeCloseHighlight.size.width - 16.0, (self.frame.size.height - _activeCloseHighlight.size.height) / 2, _activeCloseHighlight.size.width, _activeCloseHighlight.size.height);
-    _closeLayer.contents = _activeCloseHighlight;
+    _closeLayer.frame = NSMakeRect(self.frame.size.width - _closeButton.size.width - 20.0, (self.frame.size.height - _closeButton.size.height) / 2.0 - 2.0, _closeButton.size.width, _closeButton.size.height);
+    _closeLayer.contents = _closeButton;
     _closeLayer.hidden = YES;
     _closeLayerHovered = NO;
 
@@ -167,7 +171,7 @@
     {
         if (_closeLayerHovered == NO)
         {
-            _closeLayer.hidden = NO;
+            _closeLayer.contents = _closeButtonHover;
             _closeLayerHovered = YES;
         }
     }
@@ -175,10 +179,15 @@
     {
         if (_closeLayerHovered == YES)
         {
-            _closeLayer.hidden = YES;
+            _closeLayer.contents = _closeButton;
             _closeLayerHovered = NO;
         }
     }
+}
+
+- (void)mouseDown
+{
+    _closeLayer.contents = _closeButtonActive;
 }
 
 @end

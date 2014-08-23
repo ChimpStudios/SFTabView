@@ -24,7 +24,7 @@
  The tabs are rendered using a CALayer subclass, the Tab View will know which class to use by
  setting the defaultTabClassName property.
 
-*/
+ */
 
 @interface SFTabView : NSView
 {
@@ -475,7 +475,7 @@
  @param selected If YES the tag is selected.
 
  Usually the tab will change state if selected or not, the implementation should reflect this behaviour.
-
+ 
  */
 - (void)setSelected:(BOOL)selected;
 

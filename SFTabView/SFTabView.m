@@ -120,9 +120,9 @@
 - (void)setupObservers
 {
     [[NSNotificationCenter defaultCenter] addObserver:self
-                                         selector:@selector(frameDidChange:)
-                                             name:NSViewFrameDidChangeNotification
-                                           object:self];
+                                             selector:@selector(frameDidChange:)
+                                                 name:NSViewFrameDidChangeNotification
+                                               object:self];
 }
 
 
@@ -278,6 +278,10 @@
         [self mouseUp:theEvent];
         return;
     }
+    else
+    {
+        [_currentSelectedTab mouseDown];
+    }
 }
 
 
@@ -285,7 +289,7 @@
 {
     // convert to local coordinate system
     NSPoint mousePointInView = [self convertPoint:theEvent.locationInWindow fromView:nil];
-        mousePointInView = [self.layer convertPoint:mousePointInView toLayer:_tabsLayer];
+    mousePointInView = [self.layer convertPoint:mousePointInView toLayer:_tabsLayer];
 
     if (_currentClickedTab)
     {
@@ -384,7 +388,6 @@
         _currentClickedTab = nil;
     }
 
-//    [self selectTab:currentClickedTab];
     [self refreshCloseListener];
     [self scrollToTab:_currentSelectedTab];
 }

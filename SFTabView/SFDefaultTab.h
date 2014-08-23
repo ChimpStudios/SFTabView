@@ -32,8 +32,9 @@
 
     // Close layer
     SFCloseLayer *_closeLayer;
-    NSImage *_activeClose;
-    NSImage *_activeCloseHighlight;
+    NSImage *_closeButton;
+    NSImage *_closeButtonHover;
+    NSImage *_closeButtonActive;
 }
 
 @property (nonatomic, assign) BOOL selected;
@@ -42,6 +43,7 @@
 @property (nonatomic, assign) CGColorRef tabLabelActiveColor;
 @property (nonatomic, assign) CGColorRef tabLabelInactiveColor;
 
+- (void)mouseDown;
 - (void)mousemove:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;
 
