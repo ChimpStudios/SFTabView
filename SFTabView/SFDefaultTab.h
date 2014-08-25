@@ -46,5 +46,6 @@
 - (void)mouseDown;
 - (void)mousemove:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;
+- (void)setLabelName:(NSString *)name;
 
 @end

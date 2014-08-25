@@ -82,6 +82,13 @@
 }
 
 
+#warning TODO: update _representedObject, probably should make sure its always nsmutabledictionary
+- (void)setLabelName:(NSString *)name
+{
+    _tabLabel.string = name;
+}
+
+
 #pragma mak - Helpers
 
 - (void)setRepresentedObject:(id)representedObject
@@ -128,7 +135,7 @@
     constraint = [CAConstraint constraintWithAttribute:kCAConstraintMaxX
                                             relativeTo:@"superlayer"
                                              attribute:kCAConstraintMaxX
-                                                offset:-20.0];
+                                                offset:-25.0];
     [_tabLabel addConstraint:constraint];
 
     constraint = [CAConstraint constraintWithAttribute:kCAConstraintMinX
@@ -149,7 +156,7 @@
     _closeButtonActive = [NSImage imageNamed:@"tabCloseActive"];
 
     _closeLayer = [[SFCloseLayer alloc] init];
-    _closeLayer.frame = NSMakeRect(self.frame.size.width - _closeButton.size.width - 20.0, (self.frame.size.height - _closeButton.size.height) / 2.0 - 2.0, _closeButton.size.width, _closeButton.size.height);
+    _closeLayer.frame = NSMakeRect(self.frame.size.width - _closeButton.size.width - 15.0, round((self.frame.size.height - _closeButton.size.height) / 2.0) - 2.0, _closeButton.size.width, _closeButton.size.height);
     _closeLayer.contents = _closeButton;
     _closeLayer.hidden = YES;
     _closeLayerHovered = NO;

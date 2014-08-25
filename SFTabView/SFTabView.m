@@ -140,7 +140,7 @@
     }
 
     CGRect currentSelFrame = _currentSelectedTab.frame;
-    currentSelFrame.size.width += currentSelFrame.size.width / 2.0;
+    currentSelFrame.size.width += round(currentSelFrame.size.width / 2.0);
 
     // Scrolling to maintain the selected tab visible
     if (CGRectContainsRect(_tabsLayer.visibleRect, currentSelFrame) == NO)
@@ -151,7 +151,7 @@
     // eventually scrolling back if the tabview frame expanded
     if (_tabsLayer.visibleRect.size.width < ([self bounds].size.width - ([self lastTab].frame.size.width / 2.0)) && _tabsLayer.visibleRect.origin.x > 0)
     {
-        float deltaX =  ([self bounds].size.width - ([self lastTab].frame.size.width / 2.0)) - _tabsLayer.visibleRect.size.width;
+        float deltaX = ([self bounds].size.width - round([self lastTab].frame.size.width / 2.0)) - _tabsLayer.visibleRect.size.width;
 
         float newTabXPosition = _tabsLayer.visibleRect.origin.x - deltaX;
         if (newTabXPosition < 0)
@@ -385,6 +385,12 @@
         CGRect newFrame = _currentClickedTab.frame;
         newFrame.origin.x = _mouseDownStartingPoint.x;
         _currentClickedTab.frame = newFrame;
+
+        if (theEvent.clickCount == 2 && [_delegate respondsToSelector:@selector(tabView:doubleClickTab:)])
+        {
+            [_delegate tabView:self doubleClickTab:_currentSelectedTab];
+        }
+
         _currentClickedTab = nil;
     }
 
@@ -598,6 +604,14 @@
 }
 
 
+- (void)removeAllTabs
+{
+    while (self.numberOfTabs > 0)
+    {
+        [self removeTabAtIndex:0];
+    }
+}
+
 
 #pragma mark - Accessing Tabs
 
@@ -755,7 +769,7 @@
 
 - (void)scrollToTab:(CALayer *)tab animated:(BOOL)animated
 {
-    NSMutableDictionary *actions=[NSMutableDictionary dictionaryWithDictionary:[_scrollLayer actions]];
+    NSMutableDictionary *actions = [NSMutableDictionary dictionaryWithDictionary:[_scrollLayer actions]];
     [actions removeObjectForKey:@"position"];
     [actions removeObjectForKey:@"bounds"];
 
@@ -773,7 +787,7 @@
     CGRect newFrame = tab.frame;
     if ([tab isNotEqualTo:[self firstTab]] /*&& [tab isNotEqualTo:[self lastTab]]*/)
     {
-        newFrame.origin.x -= newFrame.size.width / 2.0;
+        newFrame.origin.x -= round(newFrame.size.width / 2.0);
         newFrame.size.width += newFrame.size.width;
     }
     else if ([tab isEqualTo:[self firstTab]])

@@ -190,6 +190,12 @@
  */
 - (void)removeTabAtIndex:(int)index;
 
+/**
+ Remove all tabs
+
+ */
+- (void)removeAllTabs;
+
 
 //////////////////////////////////////////////////////////////////////////////////////////
 /// @name Accessing Tabs
@@ -414,6 +420,7 @@
  */
 - (void)tabView:(SFTabView *)tabView didSelectTab:(CALayer *)tab;
 
+
 /**
  Sent at the time the user clicked a tab in the Tab View, just before the tab will change state.
  @param tabView The Tab View that sent the message.
@@ -423,6 +430,14 @@
  @see tabView:didSelectTab:
  */
 - (void)tabView:(SFTabView *)tabView willSelectTab:(CALayer *)tab;
+
+
+/**
+ Sent at the time user clicked twice in a row (e.g. double click)
+ @param tabView The Tab View that sent the message.
+ @param tab A tab contained in the Tab View.
+ */
+- (void)tabView:(SFTabView *)tabView doubleClickTab:(CALayer *)tab;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
