@@ -23,7 +23,7 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
 
 /**
  An SFTabView provides a convenient way to manage tabs in your application.
- The view contains a row of tabs that can be selected one at time and reordered by dragging.
+ The view contains a row of tabs that can be selected one at time and (optionally) reordered by dragging.
 
  The SFTabViewAppDelegate protocol will notify the delegate during notable Tab View events,
  like selecting, adding and deleting tabs.
@@ -146,6 +146,14 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
  Default: [NSColor colorWithRed:102.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
  */
 @property (nonatomic, retain) NSColor *tabLabelInactiveColor;
+
+
+/**
+ Whether or not the tabs may be reordered by the user (e.g. by clicking and dragging).
+ 
+ Default: YES
+ */
+@property (nonatomic, assign) BOOL allowsReordering;
 
 
 //////////////////////////////////////////////////////////////////////////////////////////

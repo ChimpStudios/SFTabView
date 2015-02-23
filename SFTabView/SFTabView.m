@@ -73,6 +73,8 @@
     _tabLabelActiveColor = [NSColor blackColor];
     _tabLabelInactiveColor = [NSColor colorWithRed:102.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
 
+    _allowsReordering = YES;
+
     // Background layer
     CALayer *bgLayer = [CALayer layer];
     bgLayer.frame = NSRectToCGRect([self bounds]);
@@ -287,12 +289,11 @@
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
-    // convert to local coordinate system
-    NSPoint mousePointInView = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    mousePointInView = [self.layer convertPoint:mousePointInView toLayer:_tabsLayer];
+    if (self.allowsReordering && _currentClickedTab) {
+        // convert to local coordinate system
+        NSPoint mousePointInView = [self convertPoint:theEvent.locationInWindow fromView:nil];
+        mousePointInView = [self.layer convertPoint:mousePointInView toLayer:_tabsLayer];
 
-    if (_currentClickedTab)
-    {
         NSPoint deltaPoint = [self deltaFromStartingPoint:_mouseDownPoint endPoint:mousePointInView];
 
         // Getting drag direction, positive value mean right.
@@ -381,10 +382,12 @@
 
     if (_currentClickedTab)
     {
-        // On mouse up we let the dragged tab slide to the starting or changed position.
-        CGRect newFrame = _currentClickedTab.frame;
-        newFrame.origin.x = _mouseDownStartingPoint.x;
-        _currentClickedTab.frame = newFrame;
+        if (self.allowsReordering) {
+            // On mouse up we let the dragged tab slide to the starting or changed position.
+            CGRect newFrame = _currentClickedTab.frame;
+            newFrame.origin.x = _mouseDownStartingPoint.x;
+            _currentClickedTab.frame = newFrame;
+        }
 
         if (theEvent.clickCount == 2 && [_delegate respondsToSelector:@selector(tabView:doubleClickTab:)])
         {

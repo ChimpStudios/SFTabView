@@ -26,15 +26,10 @@
 {
     id _representedObject;
 
-    NSImage *_activeTab;
-    NSImage *_inactiveTab;
     SFLabelLayer *_tabLabel;
 
     // Close layer
     SFCloseLayer *_closeLayer;
-    NSImage *_closeButton;
-    NSImage *_closeButtonHover;
-    NSImage *_closeButtonActive;
 }
 
 @property (nonatomic, assign) BOOL selected;

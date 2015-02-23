@@ -40,13 +40,13 @@
     [CATransaction setValue:(id)kCFBooleanTrue forKey:kCATransactionDisableActions];
     if (selected == YES)
     {
-        [self setContents:_activeTab];
+        [self setContents:self.class.activeTabImage];
         _tabLabel.foregroundColor = _tabLabelActiveColor;
         _closeLayer.hidden = NO;
     }
     else
     {
-        [self setContents:_inactiveTab];
+        [self setContents:self.class.inactiveTabImage];
         _tabLabel.foregroundColor = _tabLabelInactiveColor;
         _closeLayer.hidden = YES;
     }
@@ -91,6 +91,56 @@
 
 #pragma mak - Helpers
 
++ (NSImage*)activeTabImage {
+    static NSImage *image = nil;
+
+    if (!image) {
+        image = [[NSImage alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForImageResource:@"activeTab"]];
+    }
+
+    return image;
+}
+
++ (NSImage*)inactiveTabImage {
+    static NSImage *image = nil;
+
+    if (!image) {
+        image = [[NSImage alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForImageResource:@"inactiveTab"]];
+    }
+
+    return image;
+}
+
++ (NSImage*)tabCloseImage {
+    static NSImage *image = nil;
+
+    if (!image) {
+        image = [[NSImage alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForImageResource:@"tabClose"]];
+    }
+
+    return image;
+}
+
++ (NSImage*)tabCloseHoverImage {
+    static NSImage *image = nil;
+
+    if (!image) {
+        image = [[NSImage alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForImageResource:@"tabCloseHover"]];
+    }
+
+    return image;
+}
+
++ (NSImage*)tabCloseActiveImage {
+    static NSImage *image = nil;
+
+    if (!image) {
+        image = [[NSImage alloc] initWithContentsOfURL:[[NSBundle bundleForClass:self.class] URLForImageResource:@"tabCloseActive"]];
+    }
+
+    return image;
+}
+
 - (void)setRepresentedObject:(id)representedObject
 {
     CAConstraintLayoutManager *layout = [CAConstraintLayoutManager layoutManager];
@@ -98,14 +148,10 @@
 
     _representedObject = representedObject;
 
-    if (!_activeTab)
-    {
-        _activeTab = [NSImage imageNamed:@"activeTab"];
-		_inactiveTab = [NSImage imageNamed:@"inactiveTab"];
-    }
-    self.frame = CGRectMake(0, 0, _activeTab.size.width, _activeTab.size.height);
+    NSImage *activeTab = self.class.activeTabImage;
+    self.frame = CGRectMake(0, 0, activeTab.size.width, activeTab.size.height);
 
-    [self setContents:_inactiveTab];
+    [self setContents:self.class.inactiveTabImage];
 
     _tabLabel = [SFLabelLayer layer];
     if (representedObject[@"name"] != nil)
@@ -151,13 +197,11 @@
 
 - (void)setupCloseButton
 {
-    _closeButton = [NSImage imageNamed:@"tabClose"];
-    _closeButtonHover = [NSImage imageNamed:@"tabCloseHover"];
-    _closeButtonActive = [NSImage imageNamed:@"tabCloseActive"];
+    NSImage *closeButton = self.class.tabCloseImage;
 
     _closeLayer = [[SFCloseLayer alloc] init];
-    _closeLayer.frame = NSMakeRect(self.frame.size.width - _closeButton.size.width - 15.0, round((self.frame.size.height - _closeButton.size.height) / 2.0) - 2.0, _closeButton.size.width, _closeButton.size.height);
-    _closeLayer.contents = _closeButton;
+    _closeLayer.frame = NSMakeRect(self.frame.size.width - closeButton.size.width - 15.0, round((self.frame.size.height - closeButton.size.height) / 2.0) - 2.0, closeButton.size.width, closeButton.size.height);
+    _closeLayer.contents = closeButton;
     _closeLayer.hidden = YES;
     _closeLayerHovered = NO;
 
@@ -178,7 +222,7 @@
     {
         if (_closeLayerHovered == NO)
         {
-            _closeLayer.contents = _closeButtonHover;
+            _closeLayer.contents = self.class.tabCloseHoverImage;
             _closeLayerHovered = YES;
         }
     }
@@ -186,7 +230,7 @@
     {
         if (_closeLayerHovered == YES)
         {
-            _closeLayer.contents = _closeButton;
+            _closeLayer.contents = self.class.tabCloseImage;
             _closeLayerHovered = NO;
         }
     }
@@ -194,7 +238,7 @@
 
 - (void)mouseDown
 {
-    _closeLayer.contents = _closeButtonActive;
+    _closeLayer.contents = self.class.tabCloseActiveImage;
 }
 
 @end
