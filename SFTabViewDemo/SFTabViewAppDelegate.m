@@ -7,7 +7,7 @@
 //
 
 #import "SFTabViewAppDelegate.h"
-#import "SFDefaultTab.h"
+#import <SFTabView/SFDefaultTab.h>
 
 
 @implementation SFTabViewAppDelegate

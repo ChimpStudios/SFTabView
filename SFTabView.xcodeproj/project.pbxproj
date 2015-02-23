@@ -9,42 +9,70 @@
 /* Begin PBXBuildFile section */
 		0C5CBCF811BD52BA00448ADD /* SFTabViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C5CBCF511BD52BA00448ADD /* SFTabViewAppDelegate.m */; };
 		0C5CBD0111BD534200448ADD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C5CBCFD11BD534200448ADD /* MainMenu.xib */; };
-		8714FE7D19A5422000C5D6AC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8714FE7C19A5422000C5D6AC /* QuartzCore.framework */; };
-		8714FE8419A542C200C5D6AC /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8714FE8219A542C200C5D6AC /* InfoPlist.strings */; };
-		8714FE8C19A543A000C5D6AC /* SFDefaultTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8919A543A000C5D6AC /* SFDefaultTab.m */; };
-		8714FE8D19A543A000C5D6AC /* SFTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8B19A543A000C5D6AC /* SFTabView.m */; };
+		751D10211A9A330C00364694 /* SFTabView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751D100A1A9A330C00364694 /* SFTabView.framework */; };
+		751D10221A9A330C00364694 /* SFTabView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 751D100A1A9A330C00364694 /* SFTabView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		751D102B1A9A334900364694 /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751D102A1A9A334900364694 /* AppKit.framework */; };
+		751D102D1A9A334E00364694 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751D102C1A9A334E00364694 /* Foundation.framework */; };
+		751D102F1A9A335E00364694 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 751D102E1A9A335E00364694 /* Cocoa.framework */; };
+		751D10321A9A368300364694 /* activeTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAA19A5753400C5D6AC /* activeTab.png */; };
+		751D10331A9A368300364694 /* activeTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0B519A60EF8007E2079 /* activeTab@2x.png */; };
+		751D10341A9A368300364694 /* inactiveTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAB19A5753400C5D6AC /* inactiveTab.png */; };
+		751D10351A9A368300364694 /* inactiveTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0B619A60EF8007E2079 /* inactiveTab@2x.png */; };
+		751D10361A9A368300364694 /* tabClose.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAD19A5753400C5D6AC /* tabClose.png */; };
+		751D10371A9A368300364694 /* tabClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAE19A5753400C5D6AC /* tabClose@2x.png */; };
+		751D10381A9A368300364694 /* tabCloseActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C519A810A7007E2079 /* tabCloseActive.png */; };
+		751D10391A9A368300364694 /* tabCloseActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C619A810A7007E2079 /* tabCloseActive@2x.png */; };
+		751D103A1A9A368300364694 /* tabCloseHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C719A810A7007E2079 /* tabCloseHover.png */; };
+		751D103B1A9A368300364694 /* tabCloseHover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C819A810A7007E2079 /* tabCloseHover@2x.png */; };
+		751D103C1A9A36C900364694 /* SFDefaultTab.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8919A543A000C5D6AC /* SFDefaultTab.m */; };
+		751D103D1A9A36C900364694 /* SFTabView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8714FE8B19A543A000C5D6AC /* SFTabView.m */; };
+		751D103E1A9A36D000364694 /* SFDefaultTab.h in Headers */ = {isa = PBXBuildFile; fileRef = 8714FE8819A543A000C5D6AC /* SFDefaultTab.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		751D103F1A9A36D000364694 /* SFTabView.h in Headers */ = {isa = PBXBuildFile; fileRef = 8714FE8A19A543A000C5D6AC /* SFTabView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8714FE9219A548CA00C5D6AC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8714FE9119A548CA00C5D6AC /* Images.xcassets */; };
-		8714FEAF19A5753400C5D6AC /* activeTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAA19A5753400C5D6AC /* activeTab.png */; };
-		8714FEB019A5753400C5D6AC /* inactiveTab.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAB19A5753400C5D6AC /* inactiveTab.png */; };
-		8714FEB219A5753400C5D6AC /* tabClose.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAD19A5753400C5D6AC /* tabClose.png */; };
-		8714FEB319A5753400C5D6AC /* tabClose@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8714FEAE19A5753400C5D6AC /* tabClose@2x.png */; };
-		87E9B0B719A60EF8007E2079 /* activeTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0B519A60EF8007E2079 /* activeTab@2x.png */; };
-		87E9B0B819A60EF8007E2079 /* inactiveTab@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0B619A60EF8007E2079 /* inactiveTab@2x.png */; };
-		87E9B0C919A810A7007E2079 /* tabCloseActive.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C519A810A7007E2079 /* tabCloseActive.png */; };
-		87E9B0CA19A810A7007E2079 /* tabCloseActive@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C619A810A7007E2079 /* tabCloseActive@2x.png */; };
-		87E9B0CB19A810A7007E2079 /* tabCloseHover.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C719A810A7007E2079 /* tabCloseHover.png */; };
-		87E9B0CC19A810A7007E2079 /* tabCloseHover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 87E9B0C819A810A7007E2079 /* tabCloseHover@2x.png */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
-		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		751D101F1A9A330C00364694 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 751D10091A9A330C00364694;
+			remoteInfo = SFTabView;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		751D10261A9A330C00364694 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				751D10221A9A330C00364694 /* SFTabView.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		0C5CBCF411BD52BA00448ADD /* SFTabViewAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTabViewAppDelegate.h; path = Classes/SFTabViewAppDelegate.h; sourceTree = "<group>"; };
-		0C5CBCF511BD52BA00448ADD /* SFTabViewAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTabViewAppDelegate.m; path = Classes/SFTabViewAppDelegate.m; sourceTree = "<group>"; };
-		0C5CBCFD11BD534200448ADD /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = Resources/MainMenu.xib; sourceTree = "<group>"; };
+		0C5CBCF411BD52BA00448ADD /* SFTabViewAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTabViewAppDelegate.h; path = SFTabViewDemo/SFTabViewAppDelegate.h; sourceTree = "<group>"; };
+		0C5CBCF511BD52BA00448ADD /* SFTabViewAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SFTabViewAppDelegate.m; path = SFTabViewDemo/SFTabViewAppDelegate.m; sourceTree = "<group>"; };
+		0C5CBCFD11BD534200448ADD /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MainMenu.xib; path = SFTabViewDemo/MainMenu.xib; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
-		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
-		256AC3F00F4B6AF500CF3369 /* SFTabView_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTabView_Prefix.pch; sourceTree = "<group>"; };
-		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
-		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		8714FE7C19A5422000C5D6AC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.9.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		8714FE8319A542C200C5D6AC /* English */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		256AC3F00F4B6AF500CF3369 /* SFTabViewDemo_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SFTabViewDemo_Prefix.pch; path = SFTabViewDemo/SFTabViewDemo_Prefix.pch; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SFTabViewDemo/main.m; sourceTree = "<group>"; };
+		751D100A1A9A330C00364694 /* SFTabView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SFTabView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		751D100D1A9A330C00364694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		751D102A1A9A334900364694 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		751D102C1A9A334E00364694 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		751D102E1A9A335E00364694 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		8714FE8819A543A000C5D6AC /* SFDefaultTab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFDefaultTab.h; sourceTree = "<group>"; };
 		8714FE8919A543A000C5D6AC /* SFDefaultTab.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFDefaultTab.m; sourceTree = "<group>"; };
 		8714FE8A19A543A000C5D6AC /* SFTabView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFTabView.h; sourceTree = "<group>"; };
 		8714FE8B19A543A000C5D6AC /* SFTabView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFTabView.m; sourceTree = "<group>"; };
-		8714FE9119A548CA00C5D6AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Resources/Images.xcassets; sourceTree = "<group>"; };
+		8714FE9119A548CA00C5D6AC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SFTabViewDemo/Images.xcassets; sourceTree = "<group>"; };
 		8714FEAA19A5753400C5D6AC /* activeTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activeTab.png; sourceTree = "<group>"; };
 		8714FEAB19A5753400C5D6AC /* inactiveTab.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = inactiveTab.png; sourceTree = "<group>"; };
 		8714FEAD19A5753400C5D6AC /* tabClose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabClose.png; sourceTree = "<group>"; };
@@ -55,46 +83,37 @@
 		87E9B0C619A810A7007E2079 /* tabCloseActive@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabCloseActive@2x.png"; sourceTree = "<group>"; };
 		87E9B0C719A810A7007E2079 /* tabCloseHover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabCloseHover.png; sourceTree = "<group>"; };
 		87E9B0C819A810A7007E2079 /* tabCloseHover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabCloseHover@2x.png"; sourceTree = "<group>"; };
-		8D1107310486CEB800E47090 /* SFTabView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SFTabView-Info.plist"; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* SFTabView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFTabView.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107310486CEB800E47090 /* SFTabViewDemo-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "SFTabViewDemo-Info.plist"; path = "SFTabViewDemo/SFTabViewDemo-Info.plist"; sourceTree = "<group>"; };
+		8D1107320486CEB800E47090 /* SFTabViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SFTabViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		751D10061A9A330C00364694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751D102D1A9A334E00364694 /* Foundation.framework in Frameworks */,
+				751D102B1A9A334900364694 /* AppKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8714FE7D19A5422000C5D6AC /* QuartzCore.framework in Frameworks */,
-				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
+				751D102F1A9A335E00364694 /* Cocoa.framework in Frameworks */,
+				751D10211A9A330C00364694 /* SFTabView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		080E96DDFE201D6D7F000001 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				0C5CBCF411BD52BA00448ADD /* SFTabViewAppDelegate.h */,
-				0C5CBCF511BD52BA00448ADD /* SFTabViewAppDelegate.m */,
-			);
-			name = Classes;
-			sourceTree = "<group>";
-		};
-		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
-				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
-				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* SFTabView.app */,
+				8D1107320486CEB800E47090 /* SFTabViewDemo.app */,
+				751D100A1A9A330C00364694 /* SFTabView.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -102,65 +121,58 @@
 		29B97314FDCFA39411CA2CEA /* SFTabView */ = {
 			isa = PBXGroup;
 			children = (
-				8714FE8E19A543C200C5D6AC /* SFTabView */,
+				8714FE8E19A543C200C5D6AC /* SFTabViewDemo */,
+				751D100B1A9A330C00364694 /* SFTabView */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = SFTabView;
 			sourceTree = "<group>";
 		};
-		29B97315FDCFA39411CA2CEA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				8714FE8219A542C200C5D6AC /* InfoPlist.strings */,
-				8D1107310486CEB800E47090 /* SFTabView-Info.plist */,
-				256AC3F00F4B6AF500CF3369 /* SFTabView_Prefix.pch */,
-				29B97316FDCFA39411CA2CEA /* main.m */,
-			);
-			name = "Supporting Files";
-			path = SupportingFiles;
-			sourceTree = "<group>";
-		};
-		29B97317FDCFA39411CA2CEA /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				8714FE9119A548CA00C5D6AC /* Images.xcassets */,
-				0C5CBCFD11BD534200448ADD /* MainMenu.xib */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8714FE7C19A5422000C5D6AC /* QuartzCore.framework */,
+				751D102E1A9A335E00364694 /* Cocoa.framework */,
+				751D102C1A9A334E00364694 /* Foundation.framework */,
+				751D102A1A9A334900364694 /* AppKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
-				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		8714FE8719A543A000C5D6AC /* SFTabView */ = {
+		751D100B1A9A330C00364694 /* SFTabView */ = {
 			isa = PBXGroup;
 			children = (
-				8714FEA919A5753400C5D6AC /* Images */,
 				8714FE8819A543A000C5D6AC /* SFDefaultTab.h */,
 				8714FE8919A543A000C5D6AC /* SFDefaultTab.m */,
 				8714FE8A19A543A000C5D6AC /* SFTabView.h */,
 				8714FE8B19A543A000C5D6AC /* SFTabView.m */,
+				8714FEA919A5753400C5D6AC /* Images */,
+				751D100C1A9A330C00364694 /* Supporting Files */,
 			);
 			path = SFTabView;
 			sourceTree = "<group>";
 		};
-		8714FE8E19A543C200C5D6AC /* SFTabView */ = {
+		751D100C1A9A330C00364694 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				29B97315FDCFA39411CA2CEA /* Supporting Files */,
-				8714FE8719A543A000C5D6AC /* SFTabView */,
-				29B97317FDCFA39411CA2CEA /* Resources */,
-				080E96DDFE201D6D7F000001 /* Classes */,
+				751D100D1A9A330C00364694 /* Info.plist */,
 			);
-			name = SFTabView;
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8714FE8E19A543C200C5D6AC /* SFTabViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				0C5CBCF411BD52BA00448ADD /* SFTabViewAppDelegate.h */,
+				0C5CBCF511BD52BA00448ADD /* SFTabViewAppDelegate.m */,
+				8D1107310486CEB800E47090 /* SFTabViewDemo-Info.plist */,
+				256AC3F00F4B6AF500CF3369 /* SFTabViewDemo_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+				8714FE9119A548CA00C5D6AC /* Images.xcassets */,
+				0C5CBCFD11BD534200448ADD /* MainMenu.xib */,
+			);
+			name = SFTabViewDemo;
 			sourceTree = "<group>";
 		};
 		8714FEA919A5753400C5D6AC /* Images */ = {
@@ -182,23 +194,55 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		751D10071A9A330C00364694 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751D103E1A9A36D000364694 /* SFDefaultTab.h in Headers */,
+				751D103F1A9A36D000364694 /* SFTabView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* SFTabView */ = {
+		751D10091A9A330C00364694 /* SFTabView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SFTabView" */;
+			buildConfigurationList = 751D10231A9A330C00364694 /* Build configuration list for PBXNativeTarget "SFTabView" */;
 			buildPhases = (
-				8D1107290486CEB800E47090 /* Resources */,
-				8D11072C0486CEB800E47090 /* Sources */,
-				8D11072E0486CEB800E47090 /* Frameworks */,
+				751D10051A9A330C00364694 /* Sources */,
+				751D10061A9A330C00364694 /* Frameworks */,
+				751D10071A9A330C00364694 /* Headers */,
+				751D10081A9A330C00364694 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = SFTabView;
+			productName = SFTabView;
+			productReference = 751D100A1A9A330C00364694 /* SFTabView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8D1107260486CEB800E47090 /* SFTabViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SFTabViewDemo" */;
+			buildPhases = (
+				8D1107290486CEB800E47090 /* Resources */,
+				8D11072C0486CEB800E47090 /* Sources */,
+				8D11072E0486CEB800E47090 /* Frameworks */,
+				751D10261A9A330C00364694 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				751D10201A9A330C00364694 /* PBXTargetDependency */,
+			);
+			name = SFTabViewDemo;
 			productInstallPath = "$(HOME)/Applications";
 			productName = SFTabView;
-			productReference = 8D1107320486CEB800E47090 /* SFTabView.app */;
+			productReference = 8D1107320486CEB800E47090 /* SFTabViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -208,6 +252,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0510;
+				TargetAttributes = {
+					751D10091A9A330C00364694 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+				};
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SFTabView" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -221,41 +270,55 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* SFTabView */,
+				8D1107260486CEB800E47090 /* SFTabViewDemo */,
+				751D10091A9A330C00364694 /* SFTabView */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		751D10081A9A330C00364694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751D10321A9A368300364694 /* activeTab.png in Resources */,
+				751D10331A9A368300364694 /* activeTab@2x.png in Resources */,
+				751D10341A9A368300364694 /* inactiveTab.png in Resources */,
+				751D10351A9A368300364694 /* inactiveTab@2x.png in Resources */,
+				751D10361A9A368300364694 /* tabClose.png in Resources */,
+				751D10371A9A368300364694 /* tabClose@2x.png in Resources */,
+				751D10381A9A368300364694 /* tabCloseActive.png in Resources */,
+				751D10391A9A368300364694 /* tabCloseActive@2x.png in Resources */,
+				751D103A1A9A368300364694 /* tabCloseHover.png in Resources */,
+				751D103B1A9A368300364694 /* tabCloseHover@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				87E9B0C919A810A7007E2079 /* tabCloseActive.png in Resources */,
 				8714FE9219A548CA00C5D6AC /* Images.xcassets in Resources */,
-				8714FEB319A5753400C5D6AC /* tabClose@2x.png in Resources */,
-				8714FEB019A5753400C5D6AC /* inactiveTab.png in Resources */,
-				87E9B0B819A60EF8007E2079 /* inactiveTab@2x.png in Resources */,
-				87E9B0CB19A810A7007E2079 /* tabCloseHover.png in Resources */,
-				87E9B0CC19A810A7007E2079 /* tabCloseHover@2x.png in Resources */,
-				87E9B0CA19A810A7007E2079 /* tabCloseActive@2x.png in Resources */,
-				87E9B0B719A60EF8007E2079 /* activeTab@2x.png in Resources */,
-				8714FE8419A542C200C5D6AC /* InfoPlist.strings in Resources */,
-				8714FEB219A5753400C5D6AC /* tabClose.png in Resources */,
 				0C5CBD0111BD534200448ADD /* MainMenu.xib in Resources */,
-				8714FEAF19A5753400C5D6AC /* activeTab.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		751D10051A9A330C00364694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				751D103C1A9A36C900364694 /* SFDefaultTab.m in Sources */,
+				751D103D1A9A36C900364694 /* SFTabView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8714FE8C19A543A000C5D6AC /* SFDefaultTab.m in Sources */,
-				8714FE8D19A543A000C5D6AC /* SFTabView.m in Sources */,
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				0C5CBCF811BD52BA00448ADD /* SFTabViewAppDelegate.m in Sources */,
 			);
@@ -263,85 +326,176 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		8714FE8219A542C200C5D6AC /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8714FE8319A542C200C5D6AC /* English */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
+/* Begin PBXTargetDependency section */
+		751D10201A9A330C00364694 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 751D10091A9A330C00364694 /* SFTabView */;
+			targetProxy = 751D101F1A9A330C00364694 /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		C01FCF4B08A954540054247B /* Debug */ = {
+		751D10241A9A330C00364694 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = SFTabView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		751D10251A9A330C00364694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_VERSION = A;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				INFOPLIST_FILE = SFTabView/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C01FCF4B08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SupportingFiles/SFTabView_Prefix.pch;
-				INFOPLIST_FILE = "SupportingFiles/SFTabView-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = SFTabView;
-				SDKROOT = macosx;
+				GCC_PREFIX_HEADER = SFTabViewDemo/SFTabViewDemo_Prefix.pch;
+				INFOPLIST_FILE = "SFTabViewDemo/SFTabViewDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = SFTabViewDemo;
 			};
 			name = Debug;
 		};
 		C01FCF4C08A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_ARC = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_MODEL_TUNING = G5;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SupportingFiles/SFTabView_Prefix.pch;
-				INFOPLIST_FILE = "SupportingFiles/SFTabView-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				PRODUCT_NAME = SFTabView;
-				SDKROOT = macosx;
+				GCC_PREFIX_HEADER = SFTabViewDemo/SFTabViewDemo_Prefix.pch;
+				INFOPLIST_FILE = "SFTabViewDemo/SFTabViewDemo-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = SFTabViewDemo;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SFTabView" */ = {
+		751D10231A9A330C00364694 /* Build configuration list for PBXNativeTarget "SFTabView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				751D10241A9A330C00364694 /* Debug */,
+				751D10251A9A330C00364694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "SFTabViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,

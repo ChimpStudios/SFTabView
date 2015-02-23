@@ -10,6 +10,13 @@
 #import <QuartzCore/QuartzCore.h>
 
 
+//! Project version number for SFTabView.
+FOUNDATION_EXPORT double SFTabViewVersionNumber;
+
+//! Project version string for SFTabView.
+FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
+
+
 @class SFDefaultTab;
 @protocol SFTabViewDelegate;
 

@@ -7,7 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "SFTabView.h"
+#import <SFTabView/SFTabView.h>
 
 
 @interface SFTabViewAppDelegate : NSObject <NSApplicationDelegate, SFTabViewDelegate>
