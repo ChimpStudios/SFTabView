@@ -39,7 +39,7 @@
 @property (nonatomic, assign) CGColorRef tabLabelInactiveColor;
 
 - (void)mouseDown;
-- (void)mousemove:(NSPoint)point;
+- (void)mouseMoved:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;
 - (void)setLabelName:(NSString *)name;
 

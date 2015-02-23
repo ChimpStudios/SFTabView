@@ -420,7 +420,7 @@
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
     NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mousemove:layerPoint];
+    [_currentSelectedTab mouseMoved:layerPoint];
 }
 
 
@@ -431,7 +431,7 @@
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
     NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mousemove:layerPoint];
+    [_currentSelectedTab mouseMoved:layerPoint];
 }
 
 
@@ -442,7 +442,7 @@
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
     NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mousemove:layerPoint];
+    [_currentSelectedTab mouseMoved:layerPoint];
 }
 
 

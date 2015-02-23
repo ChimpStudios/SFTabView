@@ -215,7 +215,7 @@
 }
 
 
-- (void)mousemove:(NSPoint)point
+- (void)mouseMoved:(NSPoint)point
 {
     CGPoint relative = [_closeLayer convertPoint:point fromLayer:self.superlayer];
     if ([self overCloseButton:relative])
