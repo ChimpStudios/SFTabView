@@ -58,9 +58,9 @@
 }
 
 
-- (void)tabView:(SFTabView *)tabView didRemovedTab:(CALayer *)tab
+- (void)tabView:(SFTabView *)tabView didRemoveTab:(CALayer *)tab
 {
-    NSLog(@"didRemovedTab");
+    NSLog(@"didRemoveTab");
 }
 
 

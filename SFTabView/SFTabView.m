@@ -595,9 +595,9 @@
     // adjusting the size of the tabsLayer
     [_tabsLayer setValue:[NSNumber numberWithInt:_tabsLayer.frame.size.width - ([tab frame].size.width + offset)] forKeyPath:@"frame.size.width"];
 
-    if ([_delegate respondsToSelector:@selector(tabView:didRemovedTab:)])
+    if ([_delegate respondsToSelector:@selector(tabView:didRemoveTab:)])
     {
-        [_delegate tabView:self didRemovedTab:tab];
+        [_delegate tabView:self didRemoveTab:tab];
     }
 
     // Removing tab from the arranged tags.

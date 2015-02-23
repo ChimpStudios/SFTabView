@@ -465,7 +465,7 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
  @param tabView The Tab View that sent the message.
  @param tab The new tab added to the the Tab View.
 
- @see tabView:didRemovedTab:
+ @see tabView:didRemoveTab:
  */
 - (void)tabView:(SFTabView *)tabView didAddTab:(CALayer *)tab;
 
@@ -475,7 +475,7 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
  @param tabView The Tab View that sent the message.
  @param tab The tab going to be removed from the the Tab View.
 
- @see tabView:didRemovedTab:
+ @see tabView:didRemoveTab:
  */
 - (BOOL)tabView:(SFTabView *)tabView shouldRemoveTab:(CALayer *)tab;
 
@@ -487,7 +487,7 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
 
  @see tabView:didAddTab:
  */
-- (void)tabView:(SFTabView *)tabView didRemovedTab:(CALayer *)tab;
+- (void)tabView:(SFTabView *)tabView didRemoveTab:(CALayer *)tab;
 
 @end
 
