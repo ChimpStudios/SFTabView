@@ -262,14 +262,16 @@
     {
         // Adapted from http://stackoverflow.com/a/15095645
         NSWindow *window = [self window];
-        NSPoint mouseLocation = [window convertBaseToScreen:[theEvent locationInWindow]];
+        NSPoint locationInWindow = [theEvent locationInWindow];
+        NSPoint mouseLocation = [window convertRectToScreen:NSMakeRect(locationInWindow.x, locationInWindow.y, 0, 0)].origin;
         NSPoint origin = [window frame].origin;
         // Now we loop handling mouse events until we get a mouse up event.
         while ((theEvent = [NSApp nextEventMatchingMask:NSLeftMouseDownMask|NSLeftMouseDraggedMask|NSLeftMouseUpMask untilDate:[NSDate distantFuture] inMode:NSEventTrackingRunLoopMode dequeue:YES]) && ([theEvent type] != NSLeftMouseUp))
         {
             @autoreleasepool
             {
-                NSPoint currentLocation = [window convertBaseToScreen:[theEvent locationInWindow]];
+                locationInWindow = [theEvent locationInWindow];
+                NSPoint currentLocation = [window convertRectToScreen:NSMakeRect(locationInWindow.x, locationInWindow.y, 0, 0)].origin;
                 origin.x += currentLocation.x-mouseLocation.x;
                 origin.y += currentLocation.y-mouseLocation.y;
                 // Move the window by the mouse displacement since the last event.
@@ -417,7 +419,7 @@
 - (void)mouseMoved:(NSEvent *)theEvent
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    NSPoint layerPoint = [self convertPointToBacking:localPoint];
     [_currentSelectedTab mousemove:layerPoint];
 }
 
@@ -428,7 +430,7 @@
 - (void)mouseExited:(NSEvent *)theEvent
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    NSPoint layerPoint = [self convertPointToBacking:localPoint];
     [_currentSelectedTab mousemove:layerPoint];
 }
 
@@ -439,7 +441,7 @@
 - (void)mouseEntered:(NSEvent *)theEvent
 {
     NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBase:localPoint];
+    NSPoint layerPoint = [self convertPointToBacking:localPoint];
     [_currentSelectedTab mousemove:layerPoint];
 }
 
