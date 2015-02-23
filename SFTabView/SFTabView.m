@@ -74,6 +74,7 @@
     _tabLabelInactiveColor = [NSColor colorWithRed:102.0 / 255.0 green:102.0 / 255.0 blue:102.0 / 255.0 alpha:1.0];
 
     _allowsReordering = YES;
+    _allowsClosingTabs = YES;
 
     // Background layer
     CALayer *bgLayer = [CALayer layer];
@@ -114,6 +115,16 @@
 {
     _showBottomBorder = showBottomBorder;
     _bottomBorderLayer.hidden = (_showBottomBorder == NO);
+}
+
+- (void)setAllowsClosingTabs:(BOOL)allowsClosingTabs {
+    _allowsClosingTabs = allowsClosingTabs;
+
+    for (SFDefaultTab *tab in _arrangedTabs) {
+        tab.showCloseButton = allowsClosingTabs;
+    }
+
+    [self refreshCloseListener];
 }
 
 
@@ -418,9 +429,11 @@
  */
 - (void)mouseMoved:(NSEvent *)theEvent
 {
-    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mouseMoved:layerPoint];
+    if (self.allowsClosingTabs) {
+        NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+        NSPoint layerPoint = [self convertPointToBacking:localPoint];
+        [_currentSelectedTab mouseMoved:layerPoint];
+    }
 }
 
 
@@ -429,9 +442,11 @@
  */
 - (void)mouseExited:(NSEvent *)theEvent
 {
-    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mouseMoved:layerPoint];
+    if (self.allowsClosingTabs) {
+        NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+        NSPoint layerPoint = [self convertPointToBacking:localPoint];
+        [_currentSelectedTab mouseMoved:layerPoint];
+    }
 }
 
 
@@ -440,9 +455,11 @@
  */
 - (void)mouseEntered:(NSEvent *)theEvent
 {
-    NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
-    NSPoint layerPoint = [self convertPointToBacking:localPoint];
-    [_currentSelectedTab mouseMoved:layerPoint];
+    if (self.allowsClosingTabs) {
+        NSPoint localPoint = [self convertPoint:theEvent.locationInWindow fromView:nil];
+        NSPoint layerPoint = [self convertPointToBacking:localPoint];
+        [_currentSelectedTab mouseMoved:layerPoint];
+    }
 }
 
 
@@ -452,12 +469,8 @@
     newtab.tabLabelFont = _tabLabelFont;
     newtab.tabLabelActiveColor = _tabLabelActiveColor.CGColor;
     newtab.tabLabelInactiveColor = _tabLabelInactiveColor.CGColor;
-
-    // Passing the represented object to the tab layer.
-    if ([newtab respondsToSelector:@selector(setRepresentedObject:)])
-    {
-        [newtab setRepresentedObject:representedObject];
-    }
+    newtab.representedObject = representedObject;
+    newtab.showCloseButton = self.allowsClosingTabs;
 
     // Removing animation for z-index changes.
     NSMutableDictionary *customActions = [NSMutableDictionary dictionaryWithDictionary:[newtab actions]];
@@ -709,8 +722,13 @@
 {
     // Setting up tracking area
     [self removeTrackingArea:_area];
-    _area = [[NSTrackingArea alloc] initWithRect:_currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:self userInfo:nil];
-    [self addTrackingArea:_area];
+
+    if (self.allowsClosingTabs) {
+        _area = [[NSTrackingArea alloc] initWithRect:_currentSelectedTab.frame options:(NSTrackingMouseMoved | NSTrackingMouseEnteredAndExited | NSTrackingActiveInActiveApp) owner:self userInfo:nil];
+        [self addTrackingArea:_area];
+    } else {
+        _area = nil;
+    }
 }
 
 

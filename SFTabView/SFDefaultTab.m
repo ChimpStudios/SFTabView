@@ -88,6 +88,17 @@
     _tabLabel.string = name;
 }
 
+- (void)setShowCloseButton:(BOOL)showCloseButton {
+    _showCloseButton = showCloseButton;
+
+    if (showCloseButton && !_closeLayer) {
+        [self setupCloseButton];
+    } else if (!showCloseButton && _closeLayer) {
+        [_closeLayer removeFromSuperlayer];
+        _closeLayer = nil;
+    }
+}
+
 
 #pragma mak - Helpers
 
@@ -191,7 +202,6 @@
     [_tabLabel addConstraint:constraint];
 
     [self addSublayer:_tabLabel];
-    [self setupCloseButton];
 }
 
 
@@ -202,7 +212,7 @@
     _closeLayer = [[SFCloseLayer alloc] init];
     _closeLayer.frame = NSMakeRect(self.frame.size.width - closeButton.size.width - 15.0, round((self.frame.size.height - closeButton.size.height) / 2.0) - 2.0, closeButton.size.width, closeButton.size.height);
     _closeLayer.contents = closeButton;
-    _closeLayer.hidden = YES;
+    _closeLayer.hidden = !self.selected;
     _closeLayerHovered = NO;
 
     [self addSublayer:_closeLayer];
@@ -211,34 +221,42 @@
 
 - (BOOL)overCloseButton:(NSPoint)point
 {
-    return point.x < _closeLayer.frame.size.width && point.x > 0 && point.y < _closeLayer.frame.size.height && point.y > 0;
+    if (_closeLayer) {
+        return point.x < _closeLayer.frame.size.width && point.x > 0 && point.y < _closeLayer.frame.size.height && point.y > 0;
+    } else {
+        return NO;
+    }
 }
 
 
 - (void)mouseMoved:(NSPoint)point
 {
-    CGPoint relative = [_closeLayer convertPoint:point fromLayer:self.superlayer];
-    if ([self overCloseButton:relative])
-    {
-        if (_closeLayerHovered == NO)
+    if (_closeLayer) {
+        CGPoint relative = [_closeLayer convertPoint:point fromLayer:self.superlayer];
+        if ([self overCloseButton:relative])
         {
-            _closeLayer.contents = self.class.tabCloseHoverImage;
-            _closeLayerHovered = YES;
+            if (_closeLayerHovered == NO)
+            {
+                _closeLayer.contents = self.class.tabCloseHoverImage;
+                _closeLayerHovered = YES;
+            }
         }
-    }
-    else
-    {
-        if (_closeLayerHovered == YES)
+        else
         {
-            _closeLayer.contents = self.class.tabCloseImage;
-            _closeLayerHovered = NO;
+            if (_closeLayerHovered == YES)
+            {
+                _closeLayer.contents = self.class.tabCloseImage;
+                _closeLayerHovered = NO;
+            }
         }
     }
 }
 
 - (void)mouseDown
 {
-    _closeLayer.contents = self.class.tabCloseActiveImage;
+    if (_closeLayer) {
+        _closeLayer.contents = self.class.tabCloseActiveImage;
+    }
 }
 
 @end

@@ -38,6 +38,8 @@
 @property (nonatomic, assign) CGColorRef tabLabelActiveColor;
 @property (nonatomic, assign) CGColorRef tabLabelInactiveColor;
 
+@property (nonatomic, assign) BOOL showCloseButton;
+
 - (void)mouseDown;
 - (void)mouseMoved:(NSPoint)point;
 - (void)setRepresentedObject:(id)representedObject;

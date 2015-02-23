@@ -156,6 +156,14 @@ FOUNDATION_EXPORT const unsigned char SFTabViewVersionString[];
 @property (nonatomic, assign) BOOL allowsReordering;
 
 
+/**
+ Whether or not the tabs may be closed by the user (i.e. by clicking the little close checkmark).
+
+ Default: YES
+ */
+@property (nonatomic, assign) BOOL allowsClosingTabs;
+
+
 //////////////////////////////////////////////////////////////////////////////////////////
 /// @name Adding and Removing Tabs
 //////////////////////////////////////////////////////////////////////////////////////////
